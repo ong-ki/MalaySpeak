@@ -248,18 +248,18 @@ class RoomIntegrationTest {
 
         // This is the same seeding path used by the app on startup.
         repository.clearPlaceholdersAndRefreshSeed()
-        assertEquals(540, dao.getDirectCount())
+        assertEquals(660, dao.getDirectCount())
 
         val first = dao.getAllCards().first().first()
         dao.updateLearnedStatus(first.id, isLearned = true, timestamp = 321L)
 
         repository.clearPlaceholdersAndRefreshSeed()
 
-        assertEquals(540, dao.getDirectCount())
+        assertEquals(660, dao.getDirectCount())
         val stored = dao.getAllCards().first().single { it.id == first.id }
         assertTrue(stored.isLearned)
         assertEquals(321L, stored.learnedTimestamp)
-        assertEquals(540, progressDao.getProgressOnce()?.totalPhrases)
+        assertEquals(660, progressDao.getProgressOnce()?.totalPhrases)
     }
 
     @Test
