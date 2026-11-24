@@ -13,20 +13,23 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class ThemeViewModel(
-    private val themePreferencesRepository: ThemePreferencesRepository
+    private val themePreferencesRepository: ThemePreferencesRepository,
+    initialThemeMode: ThemeMode = ThemeMode.SYSTEM
 ) : ViewModel() {
 
-    // Compose mutableStateOf boolean for instant reactive recomposition
-    var isDarkTheme by mutableStateOf(false)
+    // Compose mutableStateOf boolean for instant reactive recomposition.
+    // Initialising from the persisted value prevents a light->dark first-frame
+    // flash when the in-app preference differs from the system night mode.
+    var isDarkTheme by mutableStateOf(initialThemeMode == ThemeMode.DARK)
         private set
 
-    private var hasManualPreference = false
+    private var hasManualPreference = initialThemeMode != ThemeMode.SYSTEM
 
     val themeMode: StateFlow<ThemeMode> = themePreferencesRepository.themeMode
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.Eagerly,
-            initialValue = ThemeMode.SYSTEM
+            initialValue = initialThemeMode
         )
 
     init {
@@ -73,11 +76,17 @@ class ThemeViewModel(
         }
     }
 
-    fun setTheme(dark: Boolean) {
-        isDarkTheme = dark
-        hasManualPreference = true
+    /** Explicit three-way selection used by the appearance card. */
+    fun setThemeMode(mode: ThemeMode) {
+        when (mode) {
+            ThemeMode.LIGHT -> isDarkTheme = false
+            ThemeMode.DARK -> isDarkTheme = true
+            ThemeMode.SYSTEM -> hasManualPreference = false
+        }
+        if (mode != ThemeMode.SYSTEM) {
+            hasManualPreference = true
+        }
         viewModelScope.launch {
-            val mode = if (dark) ThemeMode.DARK else ThemeMode.LIGHT
             themePreferencesRepository.setThemeMode(mode)
         }
     }

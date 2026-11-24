@@ -5,13 +5,13 @@ import com.malayspeak.app.data.local.AppDatabase
 import com.malayspeak.app.data.repository.OfflinePhraseRepository
 
 /**
- * Main Application class for မလေးစကားပြော (MalaySpeak Offline).
+ * Main Application class for Cakap Melayu (MalaySpeak Offline).
  * Holds app-wide singletons including Room Database instance and repository.
  */
 class MalaySpeakApp : Application() {
 
     val database by lazy { AppDatabase.getInstance(this) }
-    val repository by lazy { OfflinePhraseRepository(database.vocabularyCardDao(), database.learningProgressDao()) }
+    val repository by lazy { OfflinePhraseRepository(database.vocabularyCardDao(), database.learningProgressDao(), this) }
     val themePreferencesRepository by lazy { com.malayspeak.app.data.local.preferences.ThemePreferencesRepository(this) }
 
     override fun onCreate() {

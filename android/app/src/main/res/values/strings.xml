@@ -1,34 +1,105 @@
 <resources>
-    <string name="app_name">မလေးစကားပြော</string>
-    <string name="app_name_en">MalaySpeak</string>
-    
-    <!-- Navigation Tabs -->
-    <string name="nav_translate">ဘာသာပြန်</string>
-    <string name="nav_translate_en">Translate</string>
-    <string name="nav_vocabulary">ဝေါဟာရကတ်</string>
-    <string name="nav_vocabulary_en">Vocabulary</string>
-    <string name="nav_progress">တိုးတက်မှု</string>
-    <string name="nav_progress_en">Progress</string>
+    <string name="app_name">Cakap Melayu</string>
 
-    <!-- Translation Screen -->
-    <string name="translate_placeholder">စကားစု သို့မဟုတ် စာကြောင်း ရိုက်ထည့်ပါ (ဗမာ၊ English၊ Malay)...</string>
-    <string name="btn_translate">ဘာသာပြန်မည်</string>
-    <string name="translating_status">မလေးရှား စကားပြော အသုံးအနှုန်းကို စိစစ်နေပါသည်...</string>
-    <string name="explanation_title">မလေးရှား စကားပြော ထူးခြားချက်</string>
-    <string name="pronunciation_title">အသံထွက် လမ်းညွှန်</string>
+    <!-- Bottom navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_phrases">Phrases</string>
+    <string name="nav_progress">Progress</string>
 
-    <!-- Vocabulary Screen -->
-    <string name="mark_as_learned">လေ့လာပြီးပြီ မှတ်သားရန်</string>
-    <string name="card_learned_badge">လေ့လာပြီး</string>
-    <string name="swipe_hint">နောက်ကတ်သို့ ကူးရန် ဘယ်/ညာ ပွတ်ဆွဲပါ</string>
+    <!-- Home -->
+    <string name="home_eyebrow">CAKAP MELAYU</string>
+    <string name="home_title">Cakap Melayu</string>
+    <string name="phrase_count">%1$d phrases</string>
+    <string name="offline">Offline</string>
+    <string name="learned">Learned</string>
+    <string name="remaining">Remaining</string>
+    <string name="categories">Categories</string>
+    <string name="continue_learning">Continue Learning</string>
+    <string name="next_phrase_subtitle">The next phrase to learn</string>
+    <string name="see_all">See all</string>
+    <string name="loading_phrases">Preparing phrases…</string>
+    <string name="your_progress">Your progress</string>
+    <string name="phrases_learned_count">%1$d / %2$d phrases learned</string>
+    <string name="keep_learning">Keep learning</string>
+    <string name="continue_action">Continue</string>
+    <string name="all_done">All done</string>
+    <string name="all_phrases_learned">You have learned all %1$d phrases. You can review them anytime.</string>
+    <string name="focus_areas">Focus areas</string>
+    <string name="focus_subtitle">Categories that still need attention</string>
+    <string name="learned_count_short">%1$d / %2$d learned</string>
 
-    <!-- Progress Screen -->
-    <string name="progress_title">သင်ယူမှု တိုးတက်မှု အခြေအနေ</string>
-    <string name="total_mastered">ကျက်မှတ်ပြီးသော စကားစုများ</string>
-    <string name="reset_progress">တိုးတက်မှုကို အစမှ ပြန်လည်စတင်ရန်</string>
+    <!-- Phrase library -->
+    <string name="phrase_library_eyebrow">PHRASE LIBRARY</string>
+    <string name="phrase_library_title">Phrases</string>
+    <string name="phrase_library_subtitle">Malay · Burmese · English</string>
+    <string name="result_count">%1$d results</string>
+    <string name="search_placeholder">Search phrases…</string>
+    <string name="clear_search">Clear search</string>
+    <string name="searching_phrases">Searching phrases…</string>
+    <string name="no_phrases_found">No phrases found</string>
+    <string name="no_phrases_message">Try another word or category.</string>
+    <string name="pronunciation">Pronunciation</string>
+    <string name="burmese_label">BURMESE</string>
+    <string name="english_label">ENGLISH</string>
+    <string name="usage_note">Usage note</string>
+    <string name="expand">Expand</string>
+    <string name="collapse">Collapse</string>
+    <string name="mark_learned">Mark learned</string>
 
-    <!-- Onboarding -->
-    <string name="onboarding_title">မလေးစကားပြော မှ ကြိုဆိုပါသည်</string>
-    <string name="onboarding_subtitle">မလေးရှားရောက် မြန်မာများအတွက် လက်တွေ့သုံး မလေးစကားပြော သင်ယူမှုလက်စွဲ</string>
-    <string name="onboarding_btn_start">စတင်အသုံးပြုမည်</string>
+    <!-- Audio and TTS fallback -->
+    <string name="play_malay_audio">Play Malay audio</string>
+    <string name="stop_audio">Stop audio</string>
+    <string name="audio_unavailable_title">Malay audio unavailable</string>
+    <string name="audio_network_only">The Malay voice requires an internet connection. Download Malay voice data in Text-to-Speech settings to use it offline.</string>
+    <string name="audio_not_installed">An offline Malay voice (ms-MY) is not installed on this device. Download Malay voice data in Text-to-Speech settings, then try again. The app will not automatically read with another language\'s voice.</string>
+    <string name="audio_engine_error">Could not start the speech engine. Try again or check the device\'s Text-to-Speech settings.</string>
+    <string name="audio_unavailable_generic">Malay audio is unavailable for this phrase.</string>
+    <string name="retry">Retry</string>
+    <string name="settings">Settings</string>
+    <string name="close">Close</string>
+
+    <!-- Progress and settings -->
+    <string name="insights_eyebrow">INSIGHTS</string>
+    <string name="progress_title">Progress</string>
+    <string name="learning_journey">Your learning journey</string>
+    <string name="by_category">By category</string>
+    <string name="by_category_subtitle">Progress for each category</string>
+    <string name="phrases_per_category">%1$d / %2$d phrases</string>
+    <string name="appearance">Appearance</string>
+    <string name="appearance_subtitle">Light or dark</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system_description">Follow your device\'s light/dark setting.</string>
+    <string name="theme_light_description">Always use the light theme.</string>
+    <string name="theme_dark_description">Always use the dark theme.</string>
+    <string name="data_section">Data</string>
+    <string name="data_subtitle">Manage your learning progress</string>
+    <string name="reset_progress">Reset progress</string>
+    <string name="reset_dialog_title">Reset progress</string>
+    <string name="reset_dialog_message">Are you sure you want to reset all learning marks? All phrases will remain available; only learning marks will be cleared.</string>
+    <string name="reset_confirm">Reset</string>
+    <string name="cancel">Cancel</string>
+    <string name="footer_offline">Cakap Melayu · 100% offline</string>
+
+    <!-- Interface category filters (lesson category data is unchanged) -->
+    <string name="category_all">All phrases</string>
+    <string name="category_greetings">Greetings</string>
+    <string name="category_market">Market</string>
+    <string name="category_dining">Dining</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_work">Work</string>
+    <string name="category_housing">Housing</string>
+    <string name="category_numbers_time">Numbers &amp; time</string>
+    <string name="category_health_emergency">Health &amp; emergency</string>
+    <string name="category_daily_life">Daily life</string>
+    <string name="category_slang_particles">Slang &amp; particles</string>
+
+    <string name="complete">Complete</string>
+
+    <!-- Formats and accessibility states -->
+    <string name="percent_format">%1$d%%</string>
+    <string name="ratio_format">%1$d/%2$d</string>
+    <string name="expanded_state">Expanded</string>
+    <string name="collapsed_state">Collapsed</string>
 </resources>

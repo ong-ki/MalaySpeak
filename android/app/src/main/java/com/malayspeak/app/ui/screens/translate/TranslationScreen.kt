@@ -1,459 +1,224 @@
 package com.malayspeak.app.ui.screens.translate
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkVertically
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.LightMode
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.outlined.Check
-import androidx.compose.material.icons.outlined.CheckCircle
-import androidx.compose.material.icons.outlined.DarkMode
-import androidx.compose.material.icons.outlined.LightMode
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.filled.SearchOff
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.listSaver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.malayspeak.app.R
 import com.malayspeak.app.data.local.entity.VocabularyCard
-import com.malayspeak.app.ui.components.GoogleAIGlowSearchBar
+import com.malayspeak.app.ui.components.BrandLoading
+import com.malayspeak.app.ui.components.BrandSearchField
+import com.malayspeak.app.ui.components.CategoryFilterRow
+import com.malayspeak.app.ui.components.CountPill
+import com.malayspeak.app.ui.components.EmptyState
+import com.malayspeak.app.ui.components.Eyebrow
+import com.malayspeak.app.ui.components.PhraseCard
+import com.malayspeak.app.ui.theme.MalaySpeakTheme
+import kotlinx.coroutines.launch
 
 /**
- * Minimalist Monochrome Translation / Phrases Screen
- * 1. Search Bar at the top
- * 2. Category Filter Chips immediately below
- * 3. List of Phrases ("စကားစုများ") immediately below Filter Chips as the main focus
- * 4. Expandable accordion list items (only Malay phrase collapsed, tap to reveal English, Myanmar, & explanation)
+ * Words: the complete offline phrase library.
+ *
+ * Header, search, category rail and the expandable bilingual phrase cards.
+ * Search and filtering still flow through TranslationViewModel unchanged.
  */
 @Composable
 fun TranslationScreen(
     viewModel: TranslationViewModel,
-    isDarkTheme: Boolean = false,
-    onToggleTheme: () -> Unit = {},
-    onToggleLearned: (Long, Boolean) -> Unit = { _, _ -> }
+    onToggleLearned: (Long, Boolean) -> Unit = { _, _ -> },
+    onPlayAudio: (VocabularyCard) -> Unit = {},
+    speakingCardId: () -> Long? = { null }
 ) {
-    val uiState by viewModel.uiState.collectAsState()
-    var expandedCardIds by remember { mutableStateOf(setOf<Long>()) }
-
-    val categories = listOf(
-        "ALL" to "အားလုံး",
-        "GREETINGS" to "နှုတ်ဆက်ခြင်း",
-        "WORKPLACE" to "လုပ်ငန်းခွင်",
-        "SHOPPING" to "ဈေးဝယ်ခြင်း",
-        "TRANSPORT" to "သွားလာရေး",
-        "EMERGENCY" to "အရေးပေါ်",
-        "FOOD" to "အစားအသောက်"
-    )
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 20.dp)
-    ) {
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // 1. Search Bar at the top with Theme Toggle Button in top-right corner
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            GoogleAIGlowSearchBar(
-                query = uiState.searchQuery,
-                onQueryChange = { viewModel.onSearchQueryChanged(it) },
-                modifier = Modifier.weight(1f),
-                placeholderText = "စကားစု ရှာဖွေပါ (Burmese, English, Malay)...",
-                onClearQuery = { viewModel.onSearchQueryChanged("") }
-            )
-
-            Spacer(modifier = Modifier.width(8.dp))
-
-            // Minimalist Monochrome Theme Toggle Button (Sun / Moon)
-            IconButton(
-                onClick = onToggleTheme,
-                modifier = Modifier
-                    .size(52.dp)
-                    .border(
-                        width = 1.dp,
-                        color = MaterialTheme.colorScheme.outline,
-                        shape = RoundedCornerShape(12.dp)
-                    )
-            ) {
-                Icon(
-                    imageVector = if (isDarkTheme) Icons.Outlined.LightMode else Icons.Outlined.DarkMode,
-                    contentDescription = if (isDarkTheme) "Switch to Light Mode" else "Switch to Dark Mode",
-                    tint = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        // 2. Horizontal Filter Chips immediately below Search Bar
-        LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            contentPadding = PaddingValues(vertical = 2.dp)
-        ) {
-            items(categories) { (catKey, catNameMm) ->
-                val isSelected = uiState.selectedCategory == catKey
-                Surface(
-                    shape = RoundedCornerShape(10.dp),
-                    color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
-                    border = BorderStroke(
-                        1.dp,
-                        if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
-                    ),
-                    modifier = Modifier.clickable {
-                        viewModel.onCategorySelected(catKey)
-                        expandedCardIds = emptySet()
-                    }
-                ) {
-                    Text(
-                        text = catNameMm,
-                        style = MaterialTheme.typography.labelMedium,
-                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-                        color = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.padding(horizontal = 14.dp, vertical = 7.dp)
-                    )
-                }
-            }
-        }
-
-        Spacer(modifier = Modifier.height(14.dp))
-
-        // 3. Immediately below Filter Chips: List of Phrases ("စကားစုများ") Header & Main Content
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = "စကားစုများ",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onSurface
-            )
-
-            Surface(
-                shape = RoundedCornerShape(8.dp),
-                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
-                color = MaterialTheme.colorScheme.surface
-            ) {
-                Text(
-                    text = "${uiState.searchResults.size} ခု",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        // 4. Main Focus: Expandable List of Phrases
-        if (uiState.isLoading) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1f),
-                contentAlignment = Alignment.Center
-            ) {
-                CircularProgressIndicator(
-                    color = MaterialTheme.colorScheme.onSurface,
-                    strokeWidth = 2.dp,
-                    modifier = Modifier.size(32.dp)
-                )
-            }
-        } else if (uiState.searchResults.isEmpty()) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1f),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "စကားစုများ မတွေ့ရှိပါ",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-        } else {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f),
-                verticalArrangement = Arrangement.spacedBy(10.dp),
-                contentPadding = PaddingValues(bottom = 24.dp)
-            ) {
-                items(
-                    items = uiState.searchResults,
-                    key = { it.id }
-                ) { card ->
-                    val isExpanded = expandedCardIds.contains(card.id)
-                    ExpandablePhraseCard(
-                        card = card,
-                        isExpanded = isExpanded,
-                        onCardClick = {
-                            expandedCardIds = if (isExpanded) {
-                                expandedCardIds - card.id
-                            } else {
-                                expandedCardIds + card.id
-                            }
-                        },
-                        onToggleLearned = {
-                            onToggleLearned(card.id, !card.isLearned)
-                        }
-                    )
-                }
-            }
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val spacing = MalaySpeakTheme.spacing
+    val isLargeFont = LocalDensity.current.fontScale >= 1.5f
+    val expandedCardIdsState = rememberSaveable(
+        stateSaver = listSaver(
+            save = { it.toList() },
+            restore = { it.toSet() }
+        )
+    ) { mutableStateOf(emptySet<Long>()) }
+    val listState = rememberLazyListState()
+    val coroutineScope = rememberCoroutineScope()
+    val onQueryChange = remember(viewModel) { viewModel::onSearchQueryChanged }
+    val onClearSearch = remember(viewModel) { { viewModel.onSearchQueryChanged("") } }
+    val onCategorySelected = remember(viewModel, coroutineScope, listState, expandedCardIdsState) {
+        { category: String ->
+            viewModel.onCategorySelected(category)
+            expandedCardIdsState.value = emptySet()
+            coroutineScope.launch { listState.scrollToItem(0) }
+            Unit
         }
     }
-}
 
-/**
- * Clean Minimalist Expandable Phrase Card
- * - Collapsed state: displays ONLY the Malay phrase
- * - Expanded state: animated dropdown revealing pronunciation, Myanmar meaning,
- *   English meaning, translation explanation, and learned toggle.
- */
-@Composable
-private fun ExpandablePhraseCard(
-    card: VocabularyCard,
-    isExpanded: Boolean,
-    onCardClick: () -> Unit,
-    onToggleLearned: () -> Unit
-) {
-    val rotationState by animateFloatAsState(
-        targetValue = if (isExpanded) 180f else 0f,
-        label = "expandChevronRotation"
-    )
-
-    Card(
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = if (isExpanded)
-                MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
-            else
-                MaterialTheme.colorScheme.surface
-        ),
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
-        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .animateContentSize(
-                animationSpec = spring(
-                    dampingRatio = Spring.DampingRatioNoBouncy,
-                    stiffness = Spring.StiffnessMedium
-                )
-            )
-            .clickable(onClick = onCardClick)
+    LazyColumn(
+        state = listState,
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(spacing.itemGap),
+        contentPadding = PaddingValues(
+            start = spacing.screenHorizontal,
+            end = spacing.screenHorizontal,
+            top = spacing.screenTop,
+            bottom = spacing.screenBottom
+        )
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(18.dp)
-        ) {
-            // 1. Collapsed State: Shows ONLY the Malay phrase
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.weight(1f)
-                ) {
-                    if (card.isLearned) {
-                        Icon(
-                            imageVector = Icons.Outlined.CheckCircle,
-                            contentDescription = "Learned",
-                            tint = MaterialTheme.colorScheme.onSurface,
-                            modifier = Modifier
-                                .size(18.dp)
-                                .padding(end = 4.dp)
+        item(key = "header", contentType = "header") {
+            Column {
+                if (isLargeFont) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(spacing.xs)
+                    ) {
+                        Eyebrow(text = stringResource(R.string.phrase_library_eyebrow))
+                        Text(
+                            text = stringResource(R.string.phrase_library_title),
+                            style = MaterialTheme.typography.headlineMedium,
+                            color = MaterialTheme.colorScheme.onBackground,
+                            modifier = Modifier.semantics { heading() }
                         )
-                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = stringResource(R.string.phrase_library_subtitle),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        CountPill(text = stringResource(R.string.result_count, uiState.searchResults.size))
                     }
-                    Text(
-                        text = card.malayPhrase,
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        letterSpacing = (-0.1).sp
-                    )
+                } else {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Eyebrow(text = stringResource(R.string.phrase_library_eyebrow))
+                            Spacer(modifier = Modifier.height(spacing.xxs))
+                            Text(
+                                text = stringResource(R.string.phrase_library_title),
+                                style = MaterialTheme.typography.headlineMedium,
+                                color = MaterialTheme.colorScheme.onBackground,
+                                modifier = Modifier.semantics { heading() }
+                            )
+                            Spacer(modifier = Modifier.height(spacing.xxs))
+                            Text(
+                                text = stringResource(R.string.phrase_library_subtitle),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(spacing.sm))
+                        CountPill(text = stringResource(R.string.result_count, uiState.searchResults.size))
+                    }
                 }
+                Spacer(modifier = Modifier.height(spacing.xs))
+            }
+        }
 
-                IconButton(
-                    onClick = onCardClick,
-                    modifier = Modifier.size(28.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.KeyboardArrowDown,
-                        contentDescription = if (isExpanded) "Collapse" else "Expand",
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.rotate(rotationState)
+        item(key = "search", contentType = "search") {
+            Column {
+                BrandSearchField(
+                    query = uiState.searchQuery,
+                    onQueryChange = onQueryChange,
+                    onClear = onClearSearch
+                )
+                Spacer(modifier = Modifier.height(spacing.xxs))
+            }
+        }
+
+        item(key = "categories", contentType = "categories") {
+            Column {
+                CategoryFilterRow(
+                    selectedCategory = uiState.selectedCategory,
+                    onCategorySelected = onCategorySelected
+                )
+                Spacer(modifier = Modifier.height(spacing.xs))
+            }
+        }
+
+        when {
+            uiState.isLoading -> {
+                item(key = "loading", contentType = "loading") {
+                    BrandLoading(label = stringResource(R.string.searching_phrases))
+                }
+            }
+
+            uiState.searchResults.isEmpty() -> {
+                item(key = "empty", contentType = "empty") {
+                    EmptyState(
+                        icon = Icons.Default.SearchOff,
+                        title = stringResource(R.string.no_phrases_found),
+                        message = stringResource(R.string.no_phrases_message),
+                        actionLabel = if (uiState.searchQuery.isNotBlank()) {
+                            stringResource(R.string.clear_search)
+                        } else null,
+                        onAction = if (uiState.searchQuery.isNotBlank()) {
+                            onClearSearch
+                        } else null
                     )
                 }
             }
 
-            // 2. Smooth Accordion Expansion with AnimatedVisibility
-            AnimatedVisibility(
-                visible = isExpanded,
-                enter = fadeIn() + expandVertically(),
-                exit = fadeOut() + shrinkVertically()
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 14.dp)
-                ) {
-                    Divider(
-                        color = MaterialTheme.colorScheme.outlineVariant,
-                        thickness = 1.dp
-                    )
-                    Spacer(modifier = Modifier.height(14.dp))
-
-                    // Pronunciation
-                    if (card.malayPronunciation.isNotBlank()) {
-                        Text(
-                            text = "အသံထွက်: ${card.malayPronunciation}",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontWeight = FontWeight.Medium
-                        )
-                        Spacer(modifier = Modifier.height(10.dp))
+            else -> {
+                items(
+                    items = uiState.searchResults,
+                    key = { it.id },
+                    contentType = { "phrase_card" }
+                ) { card ->
+                    val isExpanded by remember(card.id, expandedCardIdsState) {
+                        derivedStateOf { expandedCardIdsState.value.contains(card.id) }
                     }
-
-                    // Myanmar Translation
-                    Text(
-                        text = "မြန်မာပြန်:",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Spacer(modifier = Modifier.height(2.dp))
-                    Text(
-                        text = card.myanmarMeaning,
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        fontWeight = FontWeight.Medium,
-                        lineHeight = 24.sp
-                    )
-
-                    Spacer(modifier = Modifier.height(10.dp))
-
-                    // English Translation
-                    Text(
-                        text = "English:",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Spacer(modifier = Modifier.height(2.dp))
-                    Text(
-                        text = card.englishMeaning,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        lineHeight = 22.sp
-                    )
-
-                    Spacer(modifier = Modifier.height(14.dp))
-
-                    // Translation Explanation (Subtle monochrome card with 1dp border)
-                    Surface(
-                        shape = RoundedCornerShape(10.dp),
-                        color = MaterialTheme.colorScheme.surfaceVariant,
-                        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Column(modifier = Modifier.padding(14.dp)) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier.padding(bottom = 6.dp)
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Info,
-                                    contentDescription = "Explanation",
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    modifier = Modifier.size(16.dp)
-                                )
-                                Spacer(modifier = Modifier.width(6.dp))
-                                Text(
-                                    text = "ဘာသာပြန် ရှင်းလင်းချက် (Explanation):",
-                                    style = MaterialTheme.typography.labelSmall,
-                                    fontWeight = FontWeight.SemiBold,
-                                    color = MaterialTheme.colorScheme.onSurface
-                                )
+                    val isSpeaking by remember(speakingCardId, card.id) {
+                        derivedStateOf { speakingCardId() == card.id }
+                    }
+                    val onToggleExpand = remember(card.id, expandedCardIdsState) {
+                        {
+                            val current = expandedCardIdsState.value
+                            expandedCardIdsState.value = if (current.contains(card.id)) {
+                                current - card.id
+                            } else {
+                                current + card.id
                             }
-                            Text(
-                                text = card.culturalContext,
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                lineHeight = 20.sp
-                            )
                         }
                     }
-
-                    Spacer(modifier = Modifier.height(14.dp))
-
-                    // Bottom Row: Category & Mark as Learned Button
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = "${card.categoryMm} (${card.category})",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-
-                        OutlinedButton(
-                            onClick = onToggleLearned,
-                            shape = RoundedCornerShape(8.dp),
-                            border = BorderStroke(
-                                1.dp,
-                                if (card.isLearned) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
-                            ),
-                            colors = ButtonDefaults.outlinedButtonColors(
-                                containerColor = if (card.isLearned) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
-                                contentColor = if (card.isLearned) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface
-                            ),
-                            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 6.dp),
-                            modifier = Modifier.height(34.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Outlined.Check,
-                                contentDescription = null,
-                                modifier = Modifier.size(14.dp)
-                            )
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Text(
-                                text = if (card.isLearned) "လေ့လာပြီးပြီ ✓" else "မှတ်သားရန်",
-                                style = MaterialTheme.typography.labelSmall,
-                                fontWeight = FontWeight.Medium
-                            )
-                        }
+                    val onToggleCardLearned = remember(onToggleLearned, card.id, card.isLearned) {
+                        { onToggleLearned(card.id, !card.isLearned) }
                     }
+                    val onPlayCardAudio = remember(onPlayAudio, card) {
+                        { onPlayAudio(card) }
+                    }
+                    PhraseCard(
+                        card = card,
+                        isExpanded = isExpanded,
+                        onToggleExpand = onToggleExpand,
+                        onToggleLearned = onToggleCardLearned,
+                        onPlayAudio = onPlayCardAudio,
+                        isSpeaking = isSpeaking
+                    )
                 }
             }
         }

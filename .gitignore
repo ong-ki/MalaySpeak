@@ -1,8 +1,35 @@
-node_modules/
+# Android / Gradle
 build/
+.gradle/
+.idea/
+local.properties
+*.iml
+*.jks
+*.keystore
+keystore.properties
+.cxx/
+.externalNativeBuild/
+captures/
+
+# Node / Web prototype
+node_modules/
 dist/
 coverage/
+
+# OS / Editor / Temp
 .DS_Store
 *.log
 .env*
 !.env.example
+__pycache__/
+.aistudio/
+
+# Internal QA artifacts
+QA_SCREENSHOTS/
+BRAND_QA_SCREENSHOTS/
+PHYSICAL_QA_SCREENSHOTS/
+NAV_QA_SCREENSHOTS/
+FINAL_QA_REPORT.md
+BRAND_ASSETS_REPORT.md
+PHRASE_AUDIT_REPORT.md
+PHYSICAL_DEVICE_QA_CHECKLIST.md

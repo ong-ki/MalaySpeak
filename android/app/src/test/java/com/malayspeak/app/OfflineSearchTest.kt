@@ -10,7 +10,8 @@ class OfflineSearchTest {
     @Test
     fun testSeedDataContains500Phrases() {
         val phrases = PhraseSeedData.getInitial500Phrases()
-        assertEquals(500, phrases.size)
+        assertTrue("Seed data must contain at least 500 phrases", phrases.size >= 500)
+        assertEquals(540, phrases.size)
     }
 
     @Test

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- MalaySpeak aurora diagonal gradient stops (from Color.kt) -->
+    <color name="ic_launcher_bg_start">#0B6B5A</color>
+    <color name="ic_launcher_bg_mid">#1F2D37</color>
+    <color name="ic_launcher_bg_end">#2C2561</color>
+
+    <!-- High-contrast circular progress ring accent (MintGlow from Color.kt) -->
+    <color name="ic_launcher_ring_accent">#5EEAD4</color>
+</resources>

@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Flat backdrop tokens matching Color.kt (BackdropLightTop / BackdropDarkTop) for zero-flash splash handoff. -->
+    <color name="splash_background_light">#E7F2F0</color>
+    <color name="splash_background_dark">#091318</color>
+
     <style name="Theme.MalaySpeak" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/teal_primary</item>
-        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowBackground">@color/splash_background_light</item>
+        <item name="android:statusBarColor">@color/splash_background_light</item>
+        <item name="android:navigationBarColor">@color/splash_background_light</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <!-- Launch theme; AndroidX SplashScreen swaps to Theme.MalaySpeak when ready. -->
+    <style name="Theme.MalaySpeak.Splash" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenBackground">@color/splash_background_light</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_icon</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/ic_launcher_bg_start</item>
+        <item name="postSplashScreenTheme">@style/Theme.MalaySpeak</item>
+
+        <item name="android:statusBarColor">@color/splash_background_light</item>
+        <item name="android:navigationBarColor">@color/splash_background_light</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

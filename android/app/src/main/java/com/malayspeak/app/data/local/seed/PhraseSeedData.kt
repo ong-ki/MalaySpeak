@@ -4,6 +4,12 @@ import com.malayspeak.app.data.local.entity.VocabularyCard
 
 object PhraseSeedData {
 
+    /**
+     * Number of phrases shipped in the offline dataset. Keep this in sync with
+     * `assets/phrases.json` and the tests that assert the dataset size.
+     */
+    const val TOTAL_PHRASE_COUNT = 540
+
     fun getInitial500Phrases(): List<VocabularyCard> {
         val list = mutableListOf<VocabularyCard>()
         var currentId = 1L
@@ -34,7 +40,7 @@ object PhraseSeedData {
         }
 
         // ==========================================
-        // 1. GREETINGS & PLEASANTRIES (နှုတ်ဆက်ခြင်း) - 50 phrases
+        // 1. GREETINGS & PLEASANTRIES (နှုတ်ဆက်ခြင်း) - 50 original phrases
         // ==========================================
         add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Apa khabar? Sihat ke?", "အာပါ ခါဘာရ်? ဆီဟတ် ကယ်?", "နေကောင်းလား။ ကျန်းမာရဲ့လား။", "How are you? Are you doing well?", "Everyday friendly greeting; 'Sihat ke?' adds genuine warmth.")
         add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Khabar baik, alhamdulillah.", "ခါဘာရ် ဘာအစ်ခ်", "နေကောင်းပါတယ်။", "I am fine / well.", "Polite positive response to 'Apa khabar'.")
@@ -73,7 +79,7 @@ object PhraseSeedData {
         add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Silakan, nak tanya apa?", "ဆီလာကန်၊ နတ် တာညာ အာပါ?", "မေးပါခင်ဗျာ၊ ဘာမေးချင်လို့လဲ။", "Please go ahead, what do you want to ask?", "Welcoming response.")
         add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Selamat datang ke Malaysia.", "ဆလာမတ် ဒါတန်း က မလေးရှား။", "မလေးရှားနိုင်ငံမှ ကြိုဆိုပါတယ်။", "Welcome to Malaysia.", "Formal/informal welcome.")
         add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Rumah awak kat mana?", "ရူးမဟ် အာဝတ်ခ် ကတ် မာနာ?", "ခင်ဗျားရဲ့ အိမ်က ဘယ်နားမှာလဲ။", "Where is your house/room?", "'Kat mana' is spoken for 'di mana' (where).")
-        add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Saya sewa kat Kepong.", "ဆာယာ စဝါ ကတ် ကီပေါင်။", "ကျွန်တော် ကီပေါင် မှာ အိမ်ငှားနေပါတယ်။", "I rent in Kepong.", "'Sewa' means rent.")
+        add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Saya sewa kat Tampoi.", "ဆာယာ စဝါ ကတ် တမ်ပွိုင်။", "ကျွန်တော် တမ်ပွိုင် မှာ အိမ်ငှားနေပါတယ်။", "I rent in Tampoi.", "'Sewa' means rent; Tampoi is a Johor Bahru suburb.")
         add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Dekat je dengan tempat kerja.", "ဒကတ်ခ် ဂျယ် ဒငန် တမ်ပတ်ခ် ကာဂျာ။", "အလုပ်ခွင်နဲ့ အရမ်းနီးပါတယ်။", "It's very close to my workplace.", "'Dekat' means near/close.")
         add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Jauh tak dari sini?", "ဂျာအုဟ် တက် ဒါရီ ဆီနီ?", "ဒီကနေ ဝေးသလား။", "Is it far from here?", "'Jauh' means far.")
         add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Tak jauh sangat, sepuluh minit je.", "တက် ဂျာအုဟ် ဆာငတ်၊ စပူးလူး မိနစ် ဂျယ်။", "သိပ်မဝေးပါဘူး၊ ၁၀ မိနစ်လောက်ပဲ။", "Not too far, just ten minutes.", "Short distance estimate.")
@@ -88,7 +94,7 @@ object PhraseSeedData {
         add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Chow dulu boss!", "ချောင် ဒူးလူး ဘော့စ်!", "ကျွန်တော် သွားနှင့်ပြီ သူဌေးရေ!", "I am taking off now boss!", "Youth / casual street sign-off.")
 
         // ==========================================
-        // 2. MARKET & SHOPPING (ဈေးဝယ်ခြင်းနှင့် ဈေးဆစ်ခြင်း) - 50 phrases
+        // 2. MARKET & SHOPPING (ဈေးဝယ်ခြင်း) - 50 original phrases
         // ==========================================
         add("MARKET", "ဈေးဝယ်ခြင်း", "Berapa ni boss?", "ဘရာပါ နီ ဘော့စ်?", "ဒါ ဘယ်လောက်လဲ သူဌေး။", "How much is this, boss?", "The most iconic Malaysian market question.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Satu kilo berapa ringgit?", "ဆာတူ ကီလို ဘရာပါ ရင်းဂစ်?", "တစ်ကီလို ဘယ်နှစ်ရင်းဂစ်လဲ။", "How many ringgit per kilo?", "Standard weight pricing inquiry.")
@@ -101,7 +107,7 @@ object PhraseSeedData {
         add("MARKET", "ဈေးဝယ်ခြင်း", "Ada warna lain tak?", "အာဒါ ဝါရ်နာ လာအင် တက်?", "တခြားအရောင်ရော ရှိလား။", "Do you have other colors?", "Color options.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Saya nak yang ni.", "ဆာယာ နတ် ယန်း နီ။", "ကျွန်တော် ဒါလေး ယူမယ်။", "I want this one.", "'Nak' means 'want' in spoken Malay.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Tolong timbang yang ni bang.", "တိုလွန်း တင်ဘန်း ယန်း နီ ဘန်း။", "ဒါလေး ချိန်ပေးပါ အစ်ကို။", "Please weigh this one, brother.", "'Timbang' means weigh on a scale.")
-        add("MARKET", "ဈေးဝယ်ခြင်း", "Sayur ni segar lagi tak?", "ဆာယူးရ် နီ စဂါရ် လာဂီ တက်?", "ဒီဟင်းသီးဟင်းရွက်တွေ လတ်ဆတ်သေးရဲ့လား။", "Are these vegetables still fresh?", "'Segar' means fresh.")
+        add("MARKET", "ဈေးဝယ်ခြင်း", "Sayur ni masih segar tak?", "ဆာယူးရ် နီ မာစစ်ခ် စဂါရ် တက်?", "ဒီဟင်းသီးဟင်းရွက်တွေ လတ်ဆတ်သေးရဲ့လား။", "Are these vegetables still fresh?", "'Masih segar' = still fresh.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Ikan ni baru sampai ke?", "အီကန် နီ ဘာရူး ဆမ်ပိုင်း ကယ်?", "ဒီငါး အခုမှ ရောက်တာလား။", "Did this fish just arrive?", "'Ikan' means fish.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Ayam seekor berapa?", "အာယမ် ဆအဲကောရ် ဘရာပါ?", "ကြက်တစ်ကောင် ဘယ်လောက်လဲ။", "How much is one whole chicken?", "'Ayam' means chicken.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Potong lapan bahagian ya.", "ပိုတုန်း လာပန် ဘာဟာဂီယန် ယာ။", "၈ စိပ်လောက် တုံးပေးပါနော်။", "Cut it into eight pieces please.", "Instructing butcher.")
@@ -129,7 +135,7 @@ object PhraseSeedData {
         add("MARKET", "ဈေးဝယ်ခြင်း", "Garam satu paket.", "ဂါရမ် ဆာတူ ပါကတ်။", "ဆား တစ်ထုပ်။", "One packet of salt.", "'Garam' = salt.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Gula pasir dua kilo.", "ဂူလာ ပါဆီရ် ဒူဝါ ကီလို။", "သကြားဖြူ ၂ ကီလို။", "Two kilos of white sugar.", "'Gula' = sugar.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Kicap manis satu botol besar.", "ကီချပ်ခ် မာနစ်စ် ဆာတူ ဘိုတိုလ် ဘဆာရ်။", "ကြာညို့ တစ်ပုလင်းကြီး။", "One big bottle of sweet soy sauce.", "'Kicap' = soy sauce.")
-        add("MARKET", "ဈေးဝယ်ခြင်း", "Sos cili satu botol.", "ဆော့စ် ချီလီ ဆာတူ ဘိုတိုလ်။", "ငရုတ်ဆီ တစ်ပုလင်း။", "One bottle of chili sauce.", "Sauce staple.")
+        add("MARKET", "ဈေးဝယ်ခြင်း", "Sos cili satu botol.", "ဆော့စ် ချီလီ ဆာတူ ဘိုတိုလ်။", "ငရုတ်သီးဆော့စ် တစ်ပုလင်း။", "One bottle of chili sauce.", "Sauce staple.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Saya nak tengok dulu ya.", "ဆာယာ နတ် သင်းငေါ့ခ် ဒူးလူး ယာ။", "ကျွန်တော် အရင် ကြည့်ပါဦးမယ်ခင်ဗျာ။", "I just want to browse/look first.", "Polite way to look without buying yet.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Kedai ni buka pukul berapa?", "ကဒိုင်း နီ ဘူးကား ပူးကူးလ် ဘရာပါ?", "ဒီဆိုင် ဘယ်အချိန်ဖွင့်လဲ။", "What time does this shop open?", "'Buka' = open.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Tutup pukul berapa petang ni?", "တူးတုတ်ခ် ပူးကူးလ် ဘရာပါ ပတန်း နီ?", "ဒီနေ့ညနေ ဘယ်အချိန် ပိတ်မလဲ။", "What time does it close this evening?", "'Tutup' = close.")
@@ -141,8 +147,8 @@ object PhraseSeedData {
         add("MARKET", "ဈေးဝယ်ခြင်း", "Nah, duitnya.", "နာ့၊ ဒွစ်ညာ။", "ရော့၊ ပိုက်ဆံပါ။", "Here is the money.", "Handing cash.")
         add("MARKET", "ဈေးဝယ်ခြင်း", "Terima kasih, datang lagi ya!", "ထရီမာ ကာဆီး၊ ဒါတန်း လာဂီ ယာ!", "ကျေးဇူးတင်ပါတယ်၊ နောက်လည်း လာပါဦးနော်!", "Thank you, please come again!", "Warm shop parting.")
 
-                // ==========================================
-        // 3. DINING & RESTAURANT (စားသောက်ဆိုင်) - 100 Real Phrases
+        // ==========================================
+        // 3. DINING & RESTAURANT (စားသောက်ဆိုင်) - 100 original phrases
         // ==========================================
         add("DINING", "စားသောက်ဆိုင်", "Mamak, order!", "မာမတ်၊ အော်ဒါ!", "အစ်ကိုရေ၊ စားစရာ မှာမယ်ဗျို့!", "Waiter, I want to order!", "Casual way to call a waiter at a Malaysian Mamak stall.")
         add("DINING", "စားသောက်ဆိုင်", "Teh tarik satu, kurang manis!", "ထေး တာရစ်ခ် ဆာတူ၊ ကူရန်း မာနစ်စ်!", "လက်ဖက်ရည်ဆွဲ တစ်ခွက်၊ အချိုလျှော့ပေးပါ။", "One pulled tea, less sweet!", "Most popular Malaysian tea order with condensed milk.")
@@ -186,16 +192,16 @@ object PhraseSeedData {
         add("DINING", "စားသောက်ဆိုင်", "Sayur kangkung belacan satu.", "ဆာယူးရ် ကန်းကွန်း ဗလာချန် ဆာတူ။", "မျှင်ငပိ ကန်စွန်းရွက်ကြော် တစ်ပွဲ။", "One plate of stir-fried water spinach with shrimp paste.", "Classic savory vegetable dish at dinner.")
         add("DINING", "စားသောက်ဆိုင်", "Makan sini ke bungkus?", "မာကန် ဆီနီ ကယ် ဗွန်းကုစ်?", "ဒီမှာ စားမှာလား၊ ပါဆယ်လား။", "Dine in or takeaway / take out?", "Crucial question asked by every food cashier or server.")
         add("DINING", "စားသောက်ဆိုင်", "Makan sini boss.", "မာကန် ဆီနီ ဘော့စ်။", "ဒီမှာပဲ စားပါမယ် သူဌေး။", "Dine in here, boss.", "Replying that you will eat on premises.")
-        add("DINING", "စားသောက်ဆိုင်", "Bungkus / Tapau satu.", "ဗွန်းကုစ် / တာပေါင်း ဆာတူ။", "ပါဆယ် တစ်ပွဲ ထုပ်ပေးပါ။", "Takeaway / Take out one packet.", "'Tapau' is the universal Malaysian slang for takeaway.")
+        add("DINING", "စားသောက်ဆိုင်", "Bungkus satu ya bang.", "ဗွန်းကုစ် ဆာတူ ယာ ဘန်း။", "တစ်ပွဲ ထုပ်ပေးပါ အစ်ကို။", "One takeaway packet, please brother.", "'Bungkus' is the everyday word for takeaway; 'tapau' is also widely understood.")
         add("DINING", "စားသောက်ဆိုင်", "Bungkus ikat tepi satu.", "ဗွန်းကုစ် အီကတ် တာပီ ဆာတူ။", "အအေးထုပ် ဘေးကြိုးချည် ပါဆယ် တစ်ထုပ်။", "Takeaway drink tied with string at the side of the plastic bag.", "Iconic Malaysian way drinks are packaged to sip with a straw.")
-        add("DINING", "စားသောက်ဆိုင်", "Kira boss! / Berapa semua?", "ကီရာ ဘော့စ်! / ဘရာပါ ဆမူဝါ?", "ရှင်းမယ် သူဌေးရေ! / အကုန် ဘယ်လောက်ကျလဲ။", "Bill please boss! / How much is everything?", "Asking for the total bill at food stalls.")
-        add("DINING", "စားသောက်ဆိုင်", "Boleh bayar guna QR / DuitNow?", "ဘိုလဲ ဘာယားရ် ဂူနာ ကျူအာရ် / ဒွစ်နောင်း?", "QR ကုတ် / DuitNow နဲ့ ငွေရှင်းလို့ ရမလား။", "Can I pay using QR code / DuitNow cashless?", "Asking for e-wallet or bank transfer QR payment.")
+        add("DINING", "စားသောက်ဆိုင်", "Kira boss, berapa semua?", "ကီရာ ဘော့စ်၊ ဘရာပါ ဆမူဝါ?", "ရှင်းမယ် သူဌေးရေ၊ အကုန် ဘယ်လောက်ကျလဲ။", "Bill please boss, how much altogether?", "Asking for the total bill at food stalls.")
+        add("DINING", "စားသောက်ဆိုင်", "Boleh bayar guna QR ke DuitNow?", "ဘိုလဲ ဘာယားရ် ဂူနာ ကျူအာရ် ကယ် ဒွစ်နောင်း?", "QR ကုတ် ဒါမှမဟုတ် DuitNow နဲ့ ငွေရှင်းလို့ ရမလား။", "Can I pay by QR code or DuitNow?", "Asking about e-wallet or QR bank transfer payment.")
         add("DINING", "စားသောက်ဆိုင်", "Bayar tunai je boss.", "ဘာယားရ် တူးနိုင် ဂျယ် ဘော့စ်။", "ငွေသားပဲ ရှင်းပါမယ် သူဌေး။", "Paying with cash only, boss.", "Physical currency payment.")
         add("DINING", "စားသောက်ဆိုင်", "Meja nombor berapa tadi?", "မေဂျာ နွမ်ဘိုရ် ဘရာပါ တာဒီ?", "ခုနက ဘယ်စားပွဲနံပါတ်ကလဲခင်ဗျာ။", "Which table number were you at?", "Cashier confirming table before billing.")
         add("DINING", "စားသောက်ဆိုင်", "Meja nombor tujuh kat luar.", "မေဂျာ နွမ်ဘိုရ် တူးဂျုဟ် ကတ် လူးဝါးရ်။", "အပြင်ဘက်က စားပွဲနံပါတ် ၇ ပါ။", "Table number seven outside.", "Specifying your table location.")
         add("DINING", "စားသောက်ဆိုင်", "Boleh bagi resit bayaran tak?", "ဘိုလဲ ဘာဂီ ရဆစ် ဘာယာရန်း တက်?", "ငွေရှင်းပြေစာ (ဘောက်ချာ) ပေးလို့ ရမလားခင်ဗျာ။", "Can you give me the payment receipt?", "Requesting an official invoice or receipt.")
         add("DINING", "စားသောက်ဆိုင်", "Boleh minta sudu dan garpu?", "ဘိုလဲ မင်တာ ဆူးဒူး ဒန် ဂါရ်ပူး?", "ဇွန်းနဲ့ ခရင်း တောင်းလို့ ရမလားခင်ဗျာ။", "Can I ask for a spoon and fork?", "Standard cutlery request.")
-        add("DINING", "စားသောက်ဆိုင်", "Minta penyedut minuman / straw satu.", "မင်တာ ပညာဒွတ် မီနူးမန်း / စထရော ဆာတူ။", "ပိုက် တစ်ချောင်းလောက် ပေးပါခင်ဗျာ။", "Can I have a drinking straw please?", "Requesting a straw for drinks.")
+        add("DINING", "စားသောက်ဆိုင်", "Minta straw satu.", "မင်တာ စထရော ဆာတူ။", "ပိုက် တစ်ချောင်းလောက် ပေးပါခင်ဗျာ။", "Can I have one straw, please?", "'Straw' is the usual word in Malaysia; 'penyedut minuman' is the formal term.")
         add("DINING", "စားသောက်ဆိုင်", "Minta tisu lebih sikit bang.", "မင်တာ တီရှု လာဘီးဟ် ဆီကစ် ဘန်း။", "တစ်ရှူး နည်းနည်း ပိုပေးပါ အစ်ကို။", "A bit more napkins/tissues please brother.", "Asking for extra napkins.")
         add("DINING", "စားသောက်ဆိုင်", "Mangkuk kecil satu boleh?", "မန်းကွတ်ခ် ကချစ်ခ် ဆာတူ ဘိုလဲ?", "ပန်းကန်လုံး အသေး တစ်လုံးလောက် ရမလား။", "Could I have a small empty bowl please?", "For soup or sharing food.")
         add("DINING", "စားသောက်ဆိုင်", "Pinggan satu lagi ya.", "ပင်းဂန် ဆာတူ လာဂီ ယာ။", "ပန်းကန်ပြား တစ်ချပ် ထပ်ပေးပါနော်။", "One more empty plate please.", "Asking for an extra dining plate.")
@@ -204,16 +210,16 @@ object PhraseSeedData {
         add("DINING", "စားသောက်ဆိုင်", "Boleh bungkus baki lauk ni?", "ဘိုလဲ ဗွန်းကုစ် ဘာကီ လောင်းခ် နီ?", "ဒီကျန်တဲ့ ဟင်းတွေကို ပါဆယ်ထုပ်ပေးလို့ ရမလား။", "Can you pack these leftover dishes to go?", "Asking to take home leftovers.")
         add("DINING", "စားသောက်ဆိုင်", "Bayar asing-asing boleh?", "ဘာယားရ် အာဆင်း-အာဆင်း ဘိုလဲ?", "တစ်ယောက်စီ ခွဲရှင်းလို့ ရမလား။", "Can we split the bill individually?", "Requesting separate billing.")
         add("DINING", "စားသောက်ဆိုင်", "Baki duit tak cukup singgit ni.", "ဘာကီ ဒွစ် တက် ချူးကုတ်ပ် စင်းဂစ် နီ။", "အကြွေအမ်းငွေ ၁ ရင်းဂစ် လိုနေသေးတယ်ဗျ။", "The change is short by one Ringgit.", "Pointing out incorrect change politely.")
-        add("DINING", "စားသောက်ဆိုင်", "Saya vegetarian / tak makan daging.", "ဆာယာ ဗဂျီတေးရီယန်း / တက် မာကန် ဒါဂင်း။", "ကျွန်တော် သက်သတ်လွတ်ပါ / အသားမစားပါဘူး။", "I am vegetarian / I do not eat meat.", "Informing dietary restriction.")
+        add("DINING", "စားသောက်ဆိုင်", "Saya tak makan daging, ada pilihan sayur?", "ဆာယာ တက် မာကန် ဒါဂင်း၊ အာဒါ ပီလီဟန် ဆာယူးရ်?", "ကျွန်တော် အသားမစားပါဘူး၊ ဟင်းသီးဟင်းရွက် ရွေးစရာ ရှိလား။", "I don't eat meat, do you have a vegetable option?", "Clearer than the loanword 'vegetarian' at local stalls.")
         add("DINING", "စားသောက်ဆိုင်", "Makanan ni ada letak daging babi tak?", "မာကာနန်း နီ အာဒါ လတက် ဒါဂင်း ဘာဘီ တက်?", "ဒီဟင်းထဲမှာ ဝက်သား ထည့်ထားတာ ရှိလား။", "Does this dish contain any pork?", "Checking food ingredients for religious dietary reasons.")
         add("DINING", "စားသောက်ဆိုင်", "Halal ke makanan kat sini?", "ဟာလာလ် ကယ် မာကာနန်း ကတ် ဆီနီ?", "ဒီက အစားအသောက် ဟာလာလ် ဟုတ်ပါသလား။", "Is the food here certified Halal?", "Asking about Halal assurance.")
-        add("DINING", "စားသောက်ဆိုင်", "Saya alergik makanan laut / udang.", "ဆာယာ အာလဲရ်ဂစ် မာကာနန်း လာအွတ် / အူးဒန်း။", "ကျွန်တော် ပင်လယ်စာ / ပုစွန်နဲ့ ဓာတ်မတည့်ပါဘူး။", "I am allergic to seafood / prawns.", "Declaring food allergies.")
+        add("DINING", "စားသောက်ဆိုင်", "Saya alergik udang.", "ဆာယာ အာလဲရ်ဂစ် အူးဒန်း။", "ကျွန်တော် ပုစွန်နဲ့ ဓာတ်မတည့်ပါဘူး။", "I am allergic to prawns.", "State the specific allergen; seafood allergies are common.")
         add("DINING", "စားသောက်ဆိုင်", "Jangan letak kacang, saya ada alahan.", "ဂျာငန် လတက် ကာချန်း၊ ဆာယာ အာဒါ အာလာဟန်။", "မြေပဲ မထည့်ပါနဲ့၊ ကျွန်တော့်မှာ ဓာတ်မတည့်တာ ရှိလို့ပါ။", "Do not add peanuts, I have an allergy.", "Nut allergy warning.")
         add("DINING", "စားသောက်ဆိုင်", "Jangan letak taugeh dalam mee ya.", "ဂျာငန် လတက် တောင်းဂေး ဒါလမ် မီး ယာ။", "ခေါက်ဆွဲထဲ ပဲပင်ပေါက် မထည့်ပါနဲ့နော်။", "Please do not put bean sprouts in the noodles.", "Very popular Malaysian request: no bean sprouts!")
         add("DINING", "စားသောက်ဆိုင်", "Jangan letak daun ketumbar.", "ဂျာငန် လတက် ဒါအွန်း ကတုမ်ဘာရ်။", "နံနံပင် မထည့်ပါနဲ့။", "Please do not put coriander / cilantro.", "Requesting dish without coriander.")
         add("DINING", "စားသောက်ဆိုင်", "Kurang minyak sikit ya chef.", "ကူရန်း မင်းညတ်ခ် ဆီကစ် ယာ ရှက်ဖ်။", "ဆီ နည်းနည်း လျှော့ထည့်ပေးပါနော် စားဖိုမှူး။", "Less oil please chef.", "Healthier less oily cooking request.")
         add("DINING", "စားသောက်ဆိုင်", "Kurang garam, jangan masin sangat.", "ကူရန်း ဂါရမ်၊ ဂျာငန် မာဆင် ဆန်းဂတ်။", "ဆားလျှော့ပါ၊ အရမ်း မငန်ပါစေနဲ့။", "Less salt, don't make it too salty.", "Requesting low sodium.")
-        add("DINING", "စားသောက်ဆိုင်", "Jangan letak ajinomoto / serbuk perasa.", "ဂျာငန် လတက် အာဂျီနိုမိုတို / စာရ်ဘွတ်ခ် ပရာဆာ။", "အချိုမှုန့် မထည့်ပါနဲ့။", "Do not add MSG / artificial seasoning powder.", "No MSG instruction.")
+        add("DINING", "စားသောက်ဆိုင်", "Jangan letak ajinomoto ya.", "ဂျာငန် လတက် အာဂျီနိုမိုတို ယာ။", "အချိုမှုန့် မထည့်ပါနဲ့။", "Please don't add MSG.", "'Ajinomoto' is the everyday word for MSG at Malaysian eateries.")
         add("DINING", "စားသောက်ဆိုင်", "Pedas gila sambal dia!", "ပဒပ်စ် ဂီလာ ဆမ်ဘလ် ဒီယာ!", "သူ့ငရုတ်သီးဆော့စ်ကတော့ အရမ်းကို စပ်တာပဲဟေ့!", "Their chili sambal is crazy spicy!", "Exclaiming extreme spiciness.")
         add("DINING", "စားသောက်ဆိုင်", "Boleh tambah cili padi potong?", "ဘိုလဲ တမ်ဘဟ် ချီလီ ပါဒီ ပိုတွန်း?", "ငရုတ်သီးစိမ်းတောင့် ပါးပါးလှီးထားတာ ထပ်ပေးလို့ရမလား။", "Can I have some extra chopped bird's eye chilies?", "Small fiery hot chili peppers in soy sauce.")
         add("DINING", "စားသောက်ဆိုင်", "Minta kicap cair dengan cili potong.", "မင်တာ ကီချပ် ချာအီရ် ဒငန် ချီလီ ပိုတွန်း။", "ပဲငံပြာရည်အကြည်ထဲ ငရုတ်သီးစိမ်းလှီးထည့်တာ ပေးပါဦး။", "Light soy sauce with chopped chilies please.", "Essential condiment combination.")
@@ -222,7 +228,7 @@ object PhraseSeedData {
         add("DINING", "စားသောက်ဆိုင်", "Sup ni tawar sikit, minta garam.", "ဆွတ်ပ် နီ တာဝါရ် ဆီကစ်၊ မင်တာ ဂါရမ်။", "ဒီဟင်းရည်က နည်းနည်းပေါ့နေလို့ ဆားလေးပေးပါဦး။", "This soup is a bit bland, can I have salt?", "Asking for table salt.")
         add("DINING", "စားသောက်ဆိုင်", "Lauk ni dah basi ke?", "လောင်းခ် နီ ဒါ ဘာဆီ ကယ်?", "ဒီဟင်းက သိုးနေပြီလား မသိဘူး။", "Has this dish gone bad / spoiled?", "Asking if food has turned stale or spoiled.")
         add("DINING", "စားသောက်ဆိုင်", "Bau dia wangi betul, menyelerakan!", "ဘောင် ဒီယာ ဝါငီ ဘတူးလ်၊ မညာလရာကန်!", "အနံ့က သင်းပျံ့နေတာပဲ၊ သွားရည်ယိုစရာလေး!", "It smells so fragrant and appetizing!", "Complimenting enticing cooking aroma.")
-        add("DINING", "စားသောက်ဆိုင်", "Ada menu sarapan pagi apa je?", "အာဒါ မေနူး ဆာရာပန်း ပါဂီ အာပါ ဂျယ်?", "မနက်စာ မီနူး ဘာတွေ ရှိလဲခင်ဗျာ။", "What breakfast menus do you have available?", "Inquiring about morning food options.")
+        add("DINING", "စားသောက်ဆိုင်", "Sarapan pagi ada apa?", "ဆာရာပန်း ပါဂီ အာဒါ အာပါ?", "မနက်စာ ဘာတွေ ရှိလဲခင်ဗျာ။", "What do you have for breakfast?", "Short, natural way to ask about morning options.")
         add("DINING", "စားသောက်ဆိုင်", "Pukul berapa kedai ni tutup?", "ပူးကူးလ် ဘရာပါ ကဒိုင် နီ တူးတုတ်ပ်?", "ဒီဆိုင် ဘယ်အချိန် ဆိုင်ပိတ်ပါသလဲ။", "What time does this shop close?", "Checking business operating hours.")
         add("DINING", "စားသောက်ဆိုင်", "Jom lepak mamak malam ni.", "ဂျွမ် လပတ်ခ် မာမတ် မာလမ် နီ။", "ဒီည မာမတ်ဆိုင်မှာ ထိုင်စကားပြောကြစို့။", "Let's hang out at the mamak stall tonight.", "'Lepak' is the famous Malaysian slang for chilling out.")
         add("DINING", "စားသောက်ဆိုင်", "Kedai mamak ni buka 24 jam ke?", "ကဒိုင် မာမတ် နီ ဗူကာ ၂၄ ဂျမ် ကယ်?", "ဒီမာမတ်ဆိုင်က ၂၄ နာရီဖွင့်တာလား။", "Is this mamak stall open 24 hours?", "Asking about 24/7 operating hours.")
@@ -239,17 +245,17 @@ object PhraseSeedData {
         add("DINING", "စားသောက်ဆိုင်", "Tandas kat belakang sebelah kiri.", "တန်ဒပ်စ် ကတ် ဗလာကန်း စဗလာဟ် ကီရီ။", "အိမ်သာက နောက်ဘက် ဘယ်ဘက်ခြမ်းမှာပါ။", "The restroom is at the back on the left side.", "Direction answer.")
         add("DINING", "စားသောက်ဆိုင်", "Sink cuci tangan kat mana?", "ဆင်းခ် ချူချီ တာငန် ကတ် မာနာ?", "လက်ဆေးဘေစင် ဘယ်နားမှာ ရှိလဲခင်ဗျာ။", "Where is the hand-washing sink?", "Locating washing sink before eating with hands.")
         add("DINING", "စားသောက်ဆိုင်", "Sabun cuci tangan ada kat situ.", "ဆာဗွန် ချူချီ တာငန် အာဒါ ကတ် ဆီတူး။", "လက်ဆေးဆပ်ပြာ ဟိုဘက်မှာ ရှိပါတယ်။", "Hand soap is over there.", "Pointing to soap dispenser.")
-        add("DINING", "စားသောက်ဆိုင်", "Ada tengok siaran bola live malam ni?", "အာဒါ တဲန်းဂေါ့ခ် ဆီယာရန်း ဗိုလာ လိုက်ဗ် မာလမ် နီ?", "ဒီည တိုက်ရိုက်ဘောလုံးပွဲ ပြသမှာ ရှိလား။", "Are you showing the live football match tonight?", "Checking football screen at mamak.")
+        add("DINING", "စားသောက်ဆိုင်", "Malam ni ada siaran bola live tak?", "မာလမ် နီ အာဒါ ဆီယာရန်း ဗိုလာ လိုက်ဗ် တက်?", "ဒီည တိုက်ရိုက်ဘောလုံးပွဲ ပြသမှာ ရှိလား။", "Are you showing the live football match tonight?", "Checking whether the mamak stall is screening the match.")
         add("DINING", "စားသောက်ဆိုင်", "Pasang skrin besar untuk final.", "ပါဆန်း စခရင် ဗဆာရ် အွန်းတုတ်ခ် ဖိုင်နယ်။", "ဗိုလ်လုပွဲအတွက် ပရိုဂျက်တာ စခရင်ကြီး တပ်ထားပေးတယ်။", "They set up a giant big screen for the final.", "Describing match-night mamak vibe.")
         add("DINING", "စားသောက်ဆိုင်", "Sini tempat duduk dah penuh.", "ဆီနီ တမ်ပတ် ဒူးဒွတ်ခ် ဒါ ပနူးဟ်။", "ဒီမှာ ထိုင်ခုံတွေ အကုန် ပြည့်သွားပြီ။", "All the seats here are completely full.", "Finding a spot during peak hours.")
-        add("DINING", "စားသောက်ဆိုင်", "Boleh kongsi meja dengan abang?", "ဘိုလဲ ကွန်းဆီ မေဂျာ ဒငန် အာဘန်း?", "အစ်ကိုနဲ့ စားပွဲ မျှထိုင်လို့ ရမလားခင်ဗျာ။", "Can I share table space with you, brother?", "Politely sharing a table in a crowded food court.")
+        add("DINING", "စားသောက်ဆိုင်", "Boleh kongsi meja tak bang?", "ဘိုလဲ ကွန်းဆီ မေဂျာ တက် ဘန်း?", "စားပွဲ မျှထိုင်လို့ ရမလားခင်ဗျာ အစ်ကို။", "Could I share this table, brother?", "Polite request in a crowded food court.")
         add("DINING", "စားသောက်ဆိုင်", "Makan pelan-pelan, jangan tercekik.", "မာကန် ပလန်-ပလန်၊ ဂျာငန် တာရ်ချာကစ်ခ်။", "ဖြည်းဖြည်းစားပါ၊ သီးသွားမယ်။", "Eat slowly, don't choke on your food.", "Caring remark to friends or family eating fast.")
 
         // ==========================================
-        // 4. TRANSPORT & DIRECTIONS (သွားလာရေး) - 50 phrases
+        // 4. TRANSPORT & DIRECTIONS (သွားလာရေး) - 50 original phrases
         // ==========================================
-        add("TRANSPORT", "သွားလာရေး", "Bang, boleh hantar saya ke stesen LRT?", "ဘန်း၊ ဘိုလဲ ဟန်တာ ဆာယာ က စတေရှင် အယ်လ်အာရ်တီ?", "အစ်ကို၊ ကျွန်တော့်ကို LRT ဘူတာအထိ ပို့ပေးလို့ရမလား။", "Brother, can you drop me at the LRT station?", "Addressing taxi or Grab driver.")
-        add("TRANSPORT", "သွားလာရေး", "Berapa tambang sampai KL Sentral?", "ဘရာပါ တမ်ဘန်း ဆမ်ပိုင်း ကေအယ်လ် စန်ထရယ်လ်?", "KL Sentral အထိ ကားခ ဘယ်လောက်ကျမလဲ။", "How much is the fare to KL Sentral?", "'Tambang' = fare.")
+        add("TRANSPORT", "သွားလာရေး", "Bang, boleh hantar saya ke JB Sentral?", "ဘန်း၊ ဘိုလဲ ဟန်တာ ဆာယာ က ဂျေဘီ စန်ထရယ်လ်?", "အစ်ကို၊ ကျွန်တော့်ကို JB Sentral အထိ ပို့ပေးလို့ရမလား။", "Brother, can you drop me at JB Sentral?", "JB Sentral is Johor Bahru's main transport hub; there is no LRT in JB.")
+        add("TRANSPORT", "သွားလာရေး", "Berapa tambang sampai JB Sentral?", "ဘရာပါ တမ်ဘန်း ဆမ်ပိုင်း ဂျေဘီ စန်ထရယ်လ်?", "JB Sentral အထိ ကားခ ဘယ်လောက်ကျမလဲ။", "How much is the fare to JB Sentral?", "'Tambang' = fare.")
         add("TRANSPORT", "သွားလာရေး", "Ikut meter ya bang.", "အီကုတ် မီတာ ယာ ဘန်း။", "မီတာအတိုင်းပဲ မောင်းပေးနော် အစ်ကို။", "Use the taxi meter, please brother.", "Requesting metered fare.")
         add("TRANSPORT", "သွားလာရေး", "Boleh berhenti kat depan tu?", "ဘိုလဲ ဘာဟန်တီ ကတ် ဒပန် တူး?", "ဟိုးရှေ့နားလေးမှာ ရပ်ပေးလို့ ရမလား။", "Can you stop right in front there?", "'Berhenti' = stop.")
         add("TRANSPORT", "သွားလာရေး", "Masuk lorong kanan.", "မာဆုတ်ခ် လိုရွန်း ကာနန်။", "ညာဘက်လမ်းကြားထဲ ဝင်ပါ။", "Turn into the right lane/alley.", "'Kanan' = right.")
@@ -260,13 +266,13 @@ object PhraseSeedData {
         add("TRANSPORT", "သွားလာရေး", "Ada kemalangan kat depan lebuh raya.", "အာဒါ ကမာလန်းငန် ကတ် ဒပန် လဘူဟ် ရာယာ။", "အဝေးပြေးလမ်းမ ရှေ့နားမှာ ယာဉ်တိုက်မှု ဖြစ်နေတယ်။", "There is an accident ahead on the highway.", "'Kemalangan' = accident; 'Lebuhraya' = highway.")
         add("TRANSPORT", "သွားလာရေး", "Berapa lama sampai sana?", "ဘရာပါ လာမာ ဆမ်ပိုင်း ဆာနာ?", "ဟိုကိုရောက်ဖို့ ဘယ်လောက်ကြာမလဲ။", "How long to get there?", "Travel duration.")
         add("TRANSPORT", "သွားလာရေး", "Lebih kurang dua puluh minit.", "လဘီးဟ် ကူရန်း ဒူဝါ ပူးလူး မိနစ်။", "အကြမ်းဖျင်း မိနစ် ၂၀ လောက်ပါ။", "Around twenty minutes.", "'Lebih kurang' = approximately.")
-        add("TRANSPORT", "သွားလာရေး", "Bas nombor berapa pergi Pasar Seni?", "ဘတ်စ် နွမ်ဘောရ် ဘရာပါ ပါဂီ ပါဆာရ် စနီ?", "Pasar Seni သွားဖို့ ဘတ်စ်ကားနံပါတ် ဘယ်လောက် စီးရမလဲ။", "Which bus number goes to Pasar Seni?", "Bus transit question.")
-        add("TRANSPORT", "သွားလာရေး", "Bas RapidKL baru lepas jalan.", "ဘတ်စ် ရာပစ်ဒ်ကေအယ်လ် ဘာရူး လပတ်စ် ဂျာလန်။", "RapidKL ဘတ်စ်ကား ခုနလေးတင် ထွက်သွားပြီ။", "The RapidKL bus just left.", "RapidKL transit network.")
-        add("TRANSPORT", "သွားလာရေး", "Kena tukar tren kat stesen Masjid Jamek.", "ကနာ တူးကားရ် ထရန် ကတ် စတေရှင် မာ့စ်ဂျစ်ဒ် ဂျာမတ်ခ်။", "Masjid Jamek ဘူတာမှာ ရထားပြောင်းစီးရမယ်။", "Must change trains at Masjid Jamek station.", "LRT interchange.")
+        add("TRANSPORT", "သွားလာရေး", "Bas nombor berapa pergi Larkin?", "ဘတ်စ် နွမ်ဘောရ် ဘရာပါ ပါဂီ လာကင်?", "Larkin သွားဖို့ ဘတ်စ်ကားနံပါတ် ဘယ်လောက် စီးရမလဲ။", "Which bus number goes to Larkin?", "Larkin Sentral is Johor Bahru's main long-distance bus terminal.")
+        add("TRANSPORT", "သွားလာရေး", "Bas Muafakat Johor baru lepas jalan.", "ဘတ်စ် မွာဖာကတ် ဂျိုဟော ဘာရူး လပတ်စ် ဂျာလန်။", "Muafakat Johor ဘတ်စ်ကား ခုနလေးတင် ထွက်သွားပြီ။", "The Muafakat Johor bus just left.", "Muafakat Johor is the local Johor bus service; RapidKL does not operate in JB.")
+        add("TRANSPORT", "သွားလာရေး", "Naik tren KTM ke Woodlands kat JB Sentral.", "နိုက် ထရန် ကေတီအမ် က ဝုဒ်လန့်စ် ကတ် ဂျေဘီ စန်ထရယ်လ်။", "Woodlands သွား KTM ရထားကို JB Sentral မှာ စီးပါ။", "Take the KTM train to Woodlands at JB Sentral.", "The Tebrau shuttle links JB Sentral with Woodlands in Singapore.")
         add("TRANSPORT", "သွားလာရေး", "Kad Touch n Go ada baki lagi tak?", "ကတ် ထပ်ချ် အန် ဂိုး အာဒါ ဘာကီ လာဂီ တက်?", "Touch 'n Go ကတ်ထဲမှာ ပိုက်ဆံကျန်သေးရဲ့လား။", "Does the Touch 'n Go card still have balance?", "Transit smartcard in Malaysia.")
         add("TRANSPORT", "သွားလာရေး", "Kat mana boleh top up Touch n Go?", "ကတ် မာနာ ဘိုလဲ တော့ပ်အပ် ထပ်ချ် အန် ဂိုး?", "Touch 'n Go ကတ်ကို ဘယ်မှာ ငွေဖြည့်လို့ရမလဲ။", "Where can I top up Touch 'n Go?", "'Top up' = reload card.")
         add("TRANSPORT", "သွားလာရေး", "Boleh top up kat 7-Eleven atau stesen.", "ဘိုလဲ တော့ပ်အပ် ကတ် ဆဲဗင်း အလဲဗင်း အာတောင် စတေရှင်။", "7-Eleven မှာဖြစ်ဖြစ် ဘူတာမှာဖြစ်ဖြစ် ဖြည့်လို့ရပါတယ်။", "Can reload at 7-Eleven or stations.", "Reload locations.")
-        add("TRANSPORT", "သွားလာရေး", "Platform arah mana pergi Gombak?", "ပလတ်ဖောင် အာရားဟ် မာနာ ပါဂီ ဂွန်ဘတ်ခ်?", "Gombak ဘက်သွားဖို့ ဘယ်ပလက်ဖောင်းလဲခင်ဗျာ။", "Which platform direction goes to Gombak?", "'Arah' = direction.")
+        add("TRANSPORT", "သွားလာရေး", "Platform arah mana pergi Woodlands?", "ပလတ်ဖောင် အာရားဟ် မာနာ ပါဂီ ဝုဒ်လန့်စ်?", "Woodlands ဘက်သွားဖို့ ဘယ်ပလက်ဖောင်းလဲခင်ဗျာ။", "Which platform goes to Woodlands?", "'Arah' = direction.")
         add("TRANSPORT", "သွားလာရေး", "Platform satu kat sebelah kanan.", "ပလတ်ဖောင် ဆာတူ ကတ် စဘလာ့ဟ် ကာနန်။", "ပလက်ဖောင်း ၁ က ညာဘက်ခြမ်းမှာပါ။", "Platform one is on the right side.", "Platform location.")
         add("TRANSPORT", "သွားလာရေး", "Pintu tren nak tutup, cepat sikit!", "ပင်တူး ထရန် နတ် တူးတုတ်ခ်၊ ချပတ် ဆီကစ်!", "ရထားတံခါး ပိတ်တော့မယ်၊ မြန်မြန်လုပ်!", "Train door is closing, hurry up!", "'Pintu' = door; 'Cepat' = fast/hurry.")
         add("TRANSPORT", "သွားလာရေး", "Bagi laluan orang keluar dulu.", "ဘာဂီ လာလူဝမ် အိုရန်း ကလူဝါးရ် ဒူးလူး။", "လူတွေ အရင်ထွက်ပါစေဦး။", "Let people exit first.", "Commuter etiquette.")
@@ -276,7 +282,7 @@ object PhraseSeedData {
         add("TRANSPORT", "သွားလာရေး", "Kereta Myvi warna perak.", "ကရဲတာ မိုင်ဗီ ဝါရ်နာ ပေရတ်ခ်။", "ငွေရောင် Myvi ကားလေးပါ။", "Silver colored Perodua Myvi car.", "Most common car in Malaysia.")
         add("TRANSPORT", "သွားလာရေး", "Tolong buka bonet belakang ya.", "တိုလွန်း ဘူးကား ဘိုနက် ဘလာကန်း ယာ။", "နောက်ဖုံးလေး ဖွင့်ပေးပါနော် အစ်ကို။", "Please open the car trunk/boot.", "'Bonet' = trunk / boot.")
         add("TRANSPORT", "သွားလာရေး", "Saya ada dua beg besar.", "ဆာယာ အာဒါ ဒူဝါ ဘတ်ခ် ဘဆာရ်။", "ကျွန်တော့်မှာ အိတ်ကြီး နှစ်လုံး ပါတယ်။", "I have two large bags.", "Luggage note.")
-        add("TRANSPORT", "သွားလာရေး", "Tolong pasang pendingin hawa / air-cond.", "တိုလွန်း ပါဆန်း ပန်ဒင်ငင် ဟာဝါ / အဲကွန်း။", "အဲကွန်းလေး ဖွင့်ပေးပါဦးခင်ဗျာ။", "Please turn on the air conditioner.", "'Air-cond' = AC.")
+        add("TRANSPORT", "သွားလာရေး", "Tolong pasang air-cond.", "တိုလွန်း ပါဆန်း အဲကွန်း။", "အဲကွန်းလေး ဖွင့်ပေးပါဦးခင်ဗျာ။", "Please turn on the air conditioner.", "'Air-cond' is the everyday Malaysian word for AC.")
         add("TRANSPORT", "သွားလာရေး", "Sejuk sangatlah bang, boleh kurangkan?", "စဂျုတ်ခ် ဆာငတ်လာ့ ဘန်း၊ ဘိုလဲ ကူရန်းကန်?", "အရမ်း အေးလွန်းလို့ အစ်ကိုရေ၊ နည်းနည်း လျှော့ပေးမလား။", "It is too cold brother, can you turn it down?", "Adjusting AC.")
         add("TRANSPORT", "သွားလာရေး", "Boleh lalu jalan tol tak?", "ဘိုလဲ လာလူ ဂျာလန် တိုလ် တက်?", "တိုးဂိတ် လမ်းကနေ သွားလို့ရမလား။", "Can we go via the toll expressway?", "'Tol' = toll highway.")
         add("TRANSPORT", "သွားလာရေး", "Bayaran tol saya tanggung.", "ဘာယာရန် တိုလ် ဆာယာ တန်းဂွန်း။", "တိုးဂိတ်ကြေး ကျွန်တော် ကျခံပါ့မယ်။", "I will cover the toll charges.", "'Tanggung' = bear the cost.")
@@ -289,18 +295,18 @@ object PhraseSeedData {
         add("TRANSPORT", "သွားလာရေး", "Boleh tolong panggilkan teksi tak?", "ဘိုလဲ တိုလွန်း ပန်းဂီးလ်ကန် တက္ကစီ တက်?", "တက္ကစီတစ်စီးလောက် ခေါ်ပေးလို့ရမလားခင်ဗျာ။", "Can you please call a taxi for me?", "Hailing assistance.")
         add("TRANSPORT", "သွားလာရေး", "Jalan ni satu hala ke dua hala?", "ဂျာလန် နီ ဆာတူ ဟာလာ ကယ် ဒူဝါ ဟာလာ?", "ဒီလမ်းက တစ်လမ်းမောင်းလား နှစ်လမ်းမောင်းလား။", "Is this a one-way or two-way street?", "'Satu hala' = one way.")
         add("TRANSPORT", "သွားလာရေး", "Jangan parkir kat sini, kena saman nanti.", "ဂျာငန် ပါရ်ကီရ် ကတ် ဆီနီ၊ ကနာ ဆာမန် နန်တီ။", "ဒီမှာ ကားမရပ်ပါနဲ့၊ ဒဏ်ကြေးဆောင်ရလိမ့်မယ်။", "Don't park here, you will get fined later.", "'Saman' = traffic fine/summon.")
-        add("TRANSPORT", "သွားလာရေး", "Kena tarik kereta oleh DBKL.", "ကနာ တာရစ်ခ် ကရဲတာ အိုလဲ ဒီဘီကေအယ်လ်။", "DBKL မြို့တော်စည်ပင်က ကားဆွဲသွားလိမ့်မယ်။", "Car will get towed by city hall (DBKL).", "'DBKL' = Kuala Lumpur City Hall.")
+        add("TRANSPORT", "သွားလာရေး", "Kena tarik kereta oleh MBJB.", "ကနာ တာရစ်ခ် ကရဲတာ အိုလဲ အမ်ဘီဂျေဘီ။", "MBJB မြို့တော်စည်ပင်က ကားဆွဲသွားလိမ့်မယ်။", "The car will be towed by the city council (MBJB).", "'MBJB' = Majlis Bandaraya Johor Bahru, the Johor Bahru city council.")
         add("TRANSPORT", "သွားလာရေး", "Bayar parking guna app Touch n Go.", "ဘာယာရ် ပါကင် ဂူနာ အက်ပ် ထပ်ချ် အန် ဂိုး။", "ကားပါကင်ခကို Touch 'n Go app နဲ့ ပေးပါ။", "Pay parking fee using Touch 'n Go app.", "Mobile parking payment.")
         add("TRANSPORT", "သွားလာရေး", "Motosikal boleh lalu celah-celah.", "မိုတိုဆီကယ်လ် ဘိုလဲ လာလူ ချလာ့ဟ်-ချလာ့ဟ်။", "ဆိုင်ကယ်ဆိုရင်တော့ ကားကြားထဲက ဖြတ်သွားလို့ရတယ်။", "Motorcycles can lane-split between cars.", "'Motosikal' = motorcycle.")
         add("TRANSPORT", "သွားလာရေး", "Pakai topi keledar elok-elok.", "ပါကိုင်း တိုပီ ကလဲဒါ အယ်လော့ခ်-အယ်လော့ခ်။", "ဆိုင်ကယ်စီး ဦးထုပ် သေချာဆောင်းပါ။", "Wear the helmet properly.", "'Topi keledar' = helmet.")
         add("TRANSPORT", "သွားလာရေး", "Lintas jalan guna jejantas tu.", "လင်တပ်စ် ဂျာလန် ဂူနာ ဂျဂျန်တပ်စ် တူး။", "လမ်းကူးရင် ဟိုလူကူးတံတားကို သုံးပါ။", "Cross the road using that pedestrian overhead bridge.", "'Jejantas' = pedestrian bridge.")
-        add("TRANSPORT", "သွားလာရေး", "Bahaya melintas jalan raya laju.", "ဘာဟာယာ မလင်တပ်စ် ဂျာလန် ရာယာ လာဂျူ။", "ကားတွေ အရှိန်ပြင်းတဲ့လမ်းမကြီးကို ဖြတ်ကူးတာ အန္တရာယ်များတယ်။", "Dangerous to cross speeding highways.", "'Bahaya' = danger.")
+        add("TRANSPORT", "သွားလာရေး", "Bahaya, jalan raya ni laju.", "ဘာဟာယာ၊ ဂျာလန် ရာယာ နီ လာဂျူ။", "အန္တရာယ်များတယ်၊ ဒီလမ်းက ကားတွေ အရှိန်ပြင်းတယ်။", "It's dangerous, the traffic here is fast.", "'Bahaya' = dangerous.")
         add("TRANSPORT", "သွားလာရေး", "Stesen minyak Petronas kat depan.", "စတေရှင် မင်ညတ်ခ် ပက်ထရိုနတ်စ် ကတ် ဒပန်။", "ရှေ့နားမှာ Petronas ဓာတ်ဆီဆိုင် ရှိပါတယ်။", "Petronas petrol station is ahead.", "'Stesen minyak' = gas station.")
-        add("TRANSPORT", "သွားလာရေး", "Nak isi minyak petrol RON95.", "နတ် အီဆီ မင်ညတ်ခ် ပက်ထရိုလ် ရွန် ၉၅။", "RON95 ဓာတ်ဆီ ဖြည့်ချင်လို့ပါ။", "Want to fill up RON95 fuel.", "Fuel type.")
-        add("TRANSPORT", "သွားလာရေး", "Tayar kereta pancit / kurang angin.", "တာယာ ကရဲတာ ပန်ချစ် / ကူရန်း အာငင်။", "ကားဘီး ပေါက်သွားတယ် / လေလျော့နေတယ်။", "Car tire is punctured / low on air.", "'Tayar pancit' = flat tire.")
+        add("TRANSPORT", "သွားလာရေး", "Nak isi RON95.", "နတ် အီဆီ ရွန် ၉၅။", "RON95 ဓာတ်ဆီ ဖြည့်ချင်လို့ပါ။", "I want to fill up with RON95.", "RON95 is the subsidised petrol grade in Malaysia.")
+        add("TRANSPORT", "သွားလာရေး", "Tayar kereta saya pancit.", "တာယာ ကရဲတာ ဆာယာ ပန်ချစ်။", "ကျွန်တော့်ကားဘီး ပေါက်သွားတယ်။", "My car tyre is punctured.", "'Tayar pancit' = flat tyre.")
 
         // ==========================================
-        // 5. WORKPLACE & FACTORY (လုပ်ငန်းခွင်) - 60 phrases
+        // 5. WORKPLACE & FACTORY (လုပ်ငန်းခွင်) - 60 original phrases
         // ==========================================
         add("WORK", "လုပ်ငန်းခွင်", "Kerja ni nak siap bila boss?", "ကာဂျာ နီ နတ် ဆီယပ် ဘီလာ ဘော့စ်?", "ဒီအလုပ် ဘယ်တော့ အပြီးသတ်ရမလဲ သူဌေး။", "When should this job be completed, boss?", "Asking deadline.")
         add("WORK", "လုပ်ငန်းခွင်", "Kena siap sebelum pukul lima petang.", "ကနာ ဆီယပ် စဘလွမ် ပူးကူးလ် လီမာ ပတန်း။", "ညနေ ၅ နာရီမတိုင်ခင် အပြီးလုပ်ရမယ်။", "Must finish before 5:00 PM.", "Setting deadline.")
@@ -314,15 +320,15 @@ object PhraseSeedData {
         add("WORK", "လုပ်ငန်းခွင်", "Wajib pakai kasut keselamatan (safety boot).", "ဝါဂျစ်ဘ် ပါကိုင်း ကာဆွတ် ကဆလာမာတန်။", "Safety ဖိနပ် မဖြစ်မနေ စီးရပါမယ်။", "Compulsory to wear safety boots.", "Factory PPE regulation.")
         add("WORK", "လုပ်ငန်းခွင်", "Pakai topi keselamatan kat tapak binaan.", "ပါကိုင်း တိုပီ ကဆလာမာတန် ကတ် တာပတ်ခ် ဘီနာအန်။", "ဆောက်လုပ်ရေးဆိုက်ထဲမှာ Safety ဦးထုပ် ဆောင်းပါ။", "Wear safety helmet at construction site.", "'Tapak binaan' = construction site.")
         add("WORK", "လုပ်ငန်းခွင်", "Mesin ni rosak, jangan tekan butang hijau.", "မဲဆင်း နီ ရိုဆတ်ခ်၊ ဂျာငန် တကန် ဘူတန် ဟီဂျောင်း။", "ဒီစက် ပျက်နေတယ်၊ အစိမ်းရောင် ခလုတ်ကို မနှိပ်ပါနဲ့။", "This machine is broken, do not press green button.", "'Mesin rosak' = broken machine.")
-        add("WORK", "လုပ်ငန်းခွင်", "Panggil juruteknik / pomen tolong baiki.", "ပန်းဂီးလ် ဂျူရူးတက်ခ်နစ်ခ် / ပိုမန် တိုလွန်း ဘိုင်ကီ။", "ပြင်ဖို့အတွက် စက်ပြင်ဆရာကို လှမ်းခေါ်လိုက်ပါ။", "Call technician / mechanic to repair it.", "'Baiki' = repair.")
+        add("WORK", "လုပ်ငန်းခွင်", "Panggil pomen tolong baiki.", "ပန်းဂီးလ် ပိုမန် တိုလွန်း ဘိုင်ကီ။", "ပြင်ဖို့အတွက် စက်ပြင်ဆရာကို လှမ်းခေါ်လိုက်ပါ။", "Call the mechanic to repair it.", "'Pomen' is the everyday word for mechanic.")
         add("WORK", "လုပ်ငန်းခွင်", "Kena bersihkan kawasan kerja sebelum balik.", "ကနာ ဘာရ်ဆီးဟ်ကန် ကာဝါဆန် ကာဂျာ စဘလွမ် ဘာလစ်ခ်။", "မပြန်ခင် ကိုယ့်အလုပ်နေရာကို သန့်ရှင်းရေး လုပ်ရမယ်။", "Must clean work area before going home.", "Housekeeping rules.")
         add("WORK", "လုပ်ငန်းခွင်", "Buang sampah dalam tong hitam.", "ဘူဝမ် ဆမ်ပါဟ် ဒါလမ် တွန်း ဟီတမ်။", "အမှိုက်တွေကို အမဲရောင် အမှိုက်ပုံးထဲ စွန့်ပစ်ပါ။", "Throw trash into the black bin.", "'Sampah' = trash.")
         add("WORK", "လုပ်ငန်းခွင်", "Waktu rehat tengah hari pukul satu.", "ဝါ့က်တူ ရာဟတ် တငါ့ဟ် ဟာရီ ပူးကူးလ် ဆာတူ။", "နေ့လယ် နေ့လယ်စာ အနားယူချိန်က ၁ နာရီမှာပါ။", "Lunch break is at 1:00 PM.", "'Waktu rehat' = break time.")
         add("WORK", "လုပ်ငန်းခွင်", "Jom pergi kantin makan nasi.", "ဂျွမ် ပါဂီ ကန်တင် မာကန် နာဆီ။", "ကန်တင်းသွားပြီး ထမင်းစားကြစို့။", "Let's go to canteen to eat rice.", "'Kantin' = canteen.")
-        add("WORK", "လုပ်ငန်းခွင်", "Saya nak mohon cuti kecemasan esok.", "ဆာယာ နတ် မိုဟွန် ချူးတီ ကချာမာဆန် အဲဆော့ခ်။", "ကျွန်တော် မနက်ဖြန် အရေးပေါ်ခွင့် ယူချင်လို့ပါ။", "I want to apply for emergency leave tomorrow.", "'Cuti' = leave/holiday.")
+        add("WORK", "လုပ်ငန်းခွင်", "Saya nak ambil cuti kecemasan esok.", "ဆာယာ နတ် အန်ဘီလ် ချူးတီ ကချာမာဆန် အဲဆော့ခ်။", "ကျွန်တော် မနက်ဖြန် အရေးပေါ်ခွင့် ယူချင်လို့ပါ။", "I want to take emergency leave tomorrow.", "'Ambil cuti' is the natural spoken form; 'mohon' is formal.")
         add("WORK", "လုပ်ငန်းခွင်", "Kena ada surat doktor (MC) tak?", "ကနာ အာဒါ စူးရတ် ဒေါက်တာ (အမ်စီ) တက်?", "ဆရာဝန် ဆေးလက်မှတ် (MC) လိုသလားခင်ဗျာ။", "Must I provide medical certificate (MC)?", "'MC' = Medical Certificate.")
         add("WORK", "လုပ်ငန်းခွင်", "Ya, kena serah slip MC kat pejabat.", "ယာ၊ ကနာ စရာဟ် စလစ်ပ် အမ်စီ ကတ် ပဂျာဘတ်။", "ဟုတ်တယ်၊ ရုံးခန်းမှာ MC စာရွက် သွားတင်ရမယ်။", "Yes, must submit MC slip to the office.", "'Pejabat' = office.")
-        add("WORK", "လုပ်ငန်းခွင်", "Mandor / Supervisor dah sampai ke belum?", "မန်ဒေါရ် / ဆူပါဗိုက်ဆာ ဒါ ဆမ်ပိုင်း ကယ် ဘလိုမ်?", "မန်နေဂျာ/စူပါ ရောက်ပြီလား မရောက်သေးဘူးလား။", "Has the foreman/supervisor arrived yet?", "'Mandor' = foreman.")
+        add("WORK", "လုပ်ငန်းခွင်", "Mandor dah sampai ke belum?", "မန်ဒေါရ် ဒါ ဆမ်ပိုင်း ကယ် ဘလိုမ်?", "မန်နေဂျာ ရောက်ပြီလား မရောက်သေးဘူးလား။", "Has the foreman arrived yet?", "'Mandor' = foreman/site supervisor.")
         add("WORK", "လုပ်ငန်းခွင်", "Dia ada kat bilik mesyuarat.", "ဒီယာ အာဒါ ကတ် ဘီလစ်ခ် မရှူဝါရတ်။", "သူ အစည်းအဝေးခန်းထဲမှာ ရှိတယ်။", "He is in the meeting room.", "'Bilik mesyuarat' = meeting room.")
         add("WORK", "လုပ်ငန်းခွင်", "Tolong tandatangan borang kehadiran ni.", "တိုလွန်း တန်ဒါတာငန် ဘိုရန်း ကဟာဒီရန် နီ။", "ဒီ နေ့စဉ်တက်ရောက်မှု ဖောင်မှာ လက်မှတ်ထိုးပေးပါ။", "Please sign this attendance form.", "'Tandatangan' = signature.")
         add("WORK", "လုပ်ငန်းခွင်", "Kena punch card waktu masuk dan keluar.", "ကနာ ပန့်ချ် ကတ်ဒ် ဝါ့က်တူ မာဆုတ်ခ် ဒန် ကလူဝါးရ်။", "အဝင်ရော အထွက်ရော ကတ်ထိုးရမယ်။", "Must punch card when entering and exiting.", "'Punch card' = clock in.")
@@ -346,7 +352,7 @@ object PhraseSeedData {
         add("WORK", "လုပ်ငန်းခွင်", "Alat pemadam api kat tepi pintu keluar.", "အာလတ် ပမာဒမ် အာပီ ကတ် တပီ ပင်တူး ကလူဝါးရ်။", "မီးသတ်ဆေးဘူးက ထွက်ပေါက်တံခါးဘေးမှာ ရှိပါတယ်။", "Fire extinguisher is beside the exit door.", "'Alat pemadam api' = fire extinguisher.")
         add("WORK", "လုပ်ငန်းခွင်", "Laluan kecemasan jangan halang.", "လာလူဝမ် ကချာမာဆန် ဂျာငန် ဟာလန်း။", "အရေးပေါ် ထွက်ပေါက်လမ်းကို ပစ္စည်းတွေနဲ့ မပိတ်ထားပါနဲ့။", "Do not obstruct emergency exit routes.", "'Laluan kecemasan' = emergency route.")
         add("WORK", "လုပ်ငန်းခွင်", "Semua pekerja kena buat pemeriksaan kesihatan.", "စမွား ပကာဂျာ ကနာ ဘွတ် ပမရစ်ခ်ဆာအန် ကဆီဟာတန်။", "အလုပ်သမားအားလုံး ဆေးစစ်ချက် ခံယူရပါမယ်။", "All workers must undergo medical checkup (FOMEMA).", "FOMEMA medical screening.")
-        add("WORK", "လုပ်ငန်းခွင်", "Pasport dan permit kerja dah perbaharui?", "ပါ့စ်ပို့ ဒန် ပါမစ် ကာဂျာ ဒါ ပါရ်ဘာဟာရူအီ?", "ပတ်စ်ပို့နဲ့ အလုပ်ပါမစ် သက်တမ်းတိုးပြီးပြီလား။", "Have passport and work permit been renewed?", "'Permit kerja' = work permit.")
+        add("WORK", "လုပ်ငန်းခွင်", "Pasport dan permit kerja dah renew?", "ပါ့စ်ပို့ ဒန် ပါမစ် ကာဂျာ ဒါ ရီနယူး?", "ပတ်စ်ပို့နဲ့ အလုပ်ပါမစ် သက်တမ်းတိုးပြီးပြီလား။", "Have the passport and work permit been renewed?", "'Renew' is the usual spoken word; the formal term is 'diperbaharui'.")
         add("WORK", "လုပ်ငန်းခွင်", "Majikan tolong uruskan pembaharuan visa.", "မာဂျီကန် တိုလွန်း အူးရွတ်စ်ကန် ပမ်ဘာဟာရူအန် ဗီဇာ။", "အလုပ်ရှင်သူဌေးက ဗီဇာသက်တမ်းတိုးဖို့ ကူဆောင်ရွက်ပေးတယ်။", "Employer helps handle visa renewal.", "'Majikan' = employer.")
         add("WORK", "လုပ်ငန်းခွင်", "Simpan salinan permit elok-elok.", "ဆင်ပန် ဆာလီနန် ပါမစ် အယ်လော့ခ်-အယ်လော့ခ်။", "ပါမစ်မိတ္တူကို သေချာ သိမ်းထားပါ။", "Keep work permit photocopy properly.", "Documentation advice.")
         add("WORK", "လုပ်ငန်းခွင်", "Bawa kad pengenalan pekerja (kad ID).", "ဘာဝါ ကတ် ပင်ငါနာလန် ပကာဂျာ (ကတ် အိုင်ဒီ)။", "ဝန်ထမ်းကတ် (ID ကတ်) အမြဲ ဆောင်ထားပါ။", "Always carry employee ID card.", "'Kad ID' = employee badge.")
@@ -359,12 +365,12 @@ object PhraseSeedData {
         add("WORK", "လုပ်ငန်းခွင်", "Alhamdulillah, dapat bonus separuh bulan.", "အယ်လ်ဟမ်ဒူလိလ္လာဟ်၊ ဒါပတ်ခ် ဘိုနတ်စ် စပါရူး ဘူးလန်။", "ဝမ်းသာစရာပဲ၊ လခတစ်ဝက်စာ ဘောနပ်စ် ရတယ်။", "Grateful, got half-month bonus.", "Bonus payout.")
         add("WORK", "လုပ်ငန်းခွင်", "Kena hantar laporan sebelum jam lima.", "ကနာ ဟန်တာ လာပိုရန် စဘလွမ် ဂျမ် လီမာ။", "၅ နာရီမတိုင်ခင် အစီရင်ခံစာ ပို့ရမယ်။", "Must submit report before 5 o'clock.", "'Laporan' = report.")
         add("WORK", "လုပ်ငန်းခွင်", "Tolong semak kualiti sebelum bungkus.", "တိုလွန်း စမတ်ခ် ကွာလီတီ စဘလွမ် ဘုန်းကွတ်စ်။", "ထုပ်ပိုးခြင်း မပြုမီ အရည်အသွေး သေချာစစ်ဆေးပါ။", "Please check quality before packaging (QC).", "Quality control task.")
-        add("WORK", "လုပ်ငန်းခွင်", "Produk ni ada cacat / calar.", "ပရိုဒတ်ခ် နီ အာဒါ ချာချတ် / ချာလာ။", "ဒီပစ္စည်းမှာ ချို့ယွင်းချက်/ခြစ်ရာ ပါနေတယ်။", "This product has defect / scratch.", "'Cacat' = defect.")
+        add("WORK", "လုပ်ငန်းခွင်", "Produk ni cacat atau calar.", "ပရိုဒတ်ခ် နီ ချာချတ် အာတောင် ချာလာ။", "ဒီပစ္စည်းမှာ ချို့ယွင်းချက် ဒါမှမဟုတ် ခြစ်ရာ ပါနေတယ်။", "This product is defective or scratched.", "'Cacat' = defect; 'calar' = scratch.")
         add("WORK", "လုပ်ငန်းခွင်", "Asingkan produk yang rosak.", "အာဆင်းကန် ပရိုဒတ်ခ် ယန်း ရိုဆတ်ခ်။", "ပျက်စီးနေတဲ့ ပစ္စည်းတွေကို သပ်သပ် ခွဲထုတ်ပါ။", "Isolate defective products.", "Segregating rejects.")
         add("WORK", "လုပ်ငန်းခွင်", "Hari ni target pengeluaran seribu unit.", "ဟာရီ နီ တာဂတ် ပန်ဂလူဝါရန် စရီဘူ ယူနစ်။", "ဒီနေ့ ထုတ်လုပ်မှု ပစ်မှတ်က ယူနစ် ၁၀၀၀ ပါ။", "Today production target is 1,000 units.", "Factory shift target.")
 
         // ==========================================
-        // 6. HOUSING & ACCOMMODATION (အိမ်ငှားခြင်း) - 45 phrases
+        // 6. HOUSING & ACCOMMODATION (အိမ်ငှားခြင်း) - 45 original phrases
         // ==========================================
         add("HOUSING", "အိမ်ငှားခြင်း", "Ada bilik sewa kosong tak kat sini?", "အာဒါ ဘီလစ်ခ် စဝါ ကိုဆွန်း တက် ကတ် ဆီနီ?", "ဒီမှာ အခန်းလွတ် ငှားစရာ ရှိသလားခင်ဗျာ။", "Is there any room for rent here?", "'Bilik sewa' = rented room.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Berapa sewa sebulan?", "ဘရာပါ စဝါ စဘူးလန်?", "တစ်လ ငှားခ ဘယ်လောက်ကျပါသလဲ။", "How much is the monthly rent?", "'Sebulan' = per month.")
@@ -375,14 +381,14 @@ object PhraseSeedData {
         add("HOUSING", "အိမ်ငှားခြင်း", "Deposit dua campur satu bulan.", "ဒီပိုဆစ် ဒူဝါ ချမ်ပူးရ် ဆာတူ ဘူးလန်။", "စရန် ၂ လ + လက်ငင်း ၁ လ (2+1) ပေးရပါမယ်။", "Deposit is 2 months plus 1 month advance.", "Standard Malaysian rental formula.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Boleh saya tengok bilik dulu?", "ဘိုလဲ ဆာယာ သင်းငေါ့ခ် ဘီလစ်ခ် ဒူးလူး?", "အခန်းကို အရင် ကြည့်လို့ ရမလားခင်ဗျာ။", "Can I view the room first?", "Viewing appointment.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Bilik ni ada kipas ke air-cond?", "ဘီလစ်ခ် နီ အာဒါ ကီပတ်စ် ကယ် အဲကွန်း?", "ဒီအခန်းမှာ ပန်ကာပါသလား အဲကွန်းပါသလား။", "Does this room have a fan or air conditioner?", "'Kipas' = ceiling fan.")
-        add("HOUSING", "အိမ်ငှားခြင်း", "Ada kipas siling dengan tingkap.", "အာဒါ ကီပတ်စ် ဆီလင်း ဒငန် တင်းကပ်ခ်။", "မျက်နှာကျက်ပန်ကာနဲ့ ပြတင်းပေါက် ပါပါတယ်။", "Has ceiling fan and window.", "Ventilation features.")
+        add("HOUSING", "အိမ်ငှားခြင်း", "Ada kipas siling dan tingkap.", "အာဒါ ကီပတ်စ် ဆီလင်း ဒန် တင်းကပ်ခ်။", "မျက်နှာကျက်ပန်ကာနဲ့ ပြတင်းပေါက် ပါပါတယ်။", "It has a ceiling fan and a window.", "Describing room ventilation.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Boleh masak dalam rumah tak?", "ဘိုလဲ မာဆတ်ခ် ဒါလမ် ရူးမဟ် တက်?", "အိမ်ထဲမှာ ဟင်းချက်လို့ ရမလား။", "Is cooking allowed inside the house?", "'Masak' = cooking.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Boleh masak ringan-ringan je.", "ဘိုလဲ မာဆတ်ခ် ရင်းငန်-ရင်းငန် ဂျယ်။", "အနံ့မပြင်းတဲ့ ပေါ့ပေါ့ပါးပါး ဟင်းလောက်ပဲ ချက်လို့ရပါတယ်။", "Light cooking only allowed.", "Landlord rule.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Ada peti sejuk dengan mesin basuh tak?", "အာဒါ ပတီ စဂျုတ်ခ် ဒငန် မဲဆင်း ဘာဆူးဟ် တက်?", "ရေခဲသေတ္တာနဲ့ အဝတ်လျှော်စက် ရှိလား။", "Is there a refrigerator and washing machine?", "'Mesin basuh' = washing machine.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Ada, boleh kongsi guna.", "အာဒါ၊ ဘိုလဲ ကွန်းစီ ဂူနာ။", "ရှိတယ်၊ အတူတူ မျှသုံးလို့ရပါတယ်။", "Yes, can share usage.", "Shared appliances.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Tandas kat dalam bilik ke kat luar?", "တန်ဒတ်စ် ကတ် ဒါလမ် ဘီလစ်ခ် ကယ် ကတ် လူးဝါးရ်?", "အိမ်သာက အခန်းထဲမှာလား အပြင်မှာလား။", "Is toilet attached inside room or outside?", "Bathroom layout.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Tandas kongsi kat ruang tamu.", "တန်ဒတ်စ် ကွန်းစီ ကတ် ရူးဝမ်း တာမူး။", "ဧည့်ခန်းဘေးက အများသုံး အိမ်သာပါ။", "Shared toilet in the living area.", "Shared bathroom.")
-        add("HOUSING", "အိမ်ငှားခြင်း", "Kunci rumah dan access card ada dua.", "ကွန်းချီ ရူးမဟ် ဒန် အက်ဆက်စ် ကတ် အာဒါ ဒူဝါ။", "အိမ်သော့နဲ့ ကွန်ဒိုကတ် နှစ်စုံ ရှိပါတယ်။", "House key and access card, got two sets.", "'Kunci' = key.")
+        add("HOUSING", "အိမ်ငှားခြင်း", "Kunci rumah dengan access card ada dua set.", "ကွန်းချီ ရူးမဟ် ဒငန် အက်ဆက်စ် ကတ် အာဒါ ဒူဝါ ဆက်။", "အိမ်သော့နဲ့ ကွန်ဒိုကတ် နှစ်စုံ ရှိပါတယ်။", "There are two sets of house keys and access cards.", "'Set' is commonly used in Malaysian English and Malay.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Jangan hilangkan access card.", "ဂျာငန် ဟီလန်းကန် အက်ဆက်စ် ကတ်။", "အဝင်ကတ် မပျောက်စေနဲ့နော်။", "Do not lose the access card.", "Replacement warning.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Kena denda lima puluh ringgit kalau hilang.", "ကနာ ဒန်ဒါ လီမာ ပူးလူး ရင်းဂစ် ကာလောင် ဟီလန်း။", "ပျောက်သွားရင် ဒဏ်ငွေ ၅၀ ရင်းဂစ် ပေးရမယ်။", "Fined 50 ringgit if lost.", "Card replacement penalty.")
         add("HOUSING", "အိမ်ငှားခြင်း", "Paip air dapur ni bocorlah.", "ပိုက်ပ် အာအီရ် ဒါပူးရ် နီ ဘိုချောလာ့။", "မီးဖိုချောင် ရေပိုက် ယိုနေလို့ပါ။", "The kitchen water pipe is leaking.", "'Bocor' = leaking.")
@@ -413,7 +419,7 @@ object PhraseSeedData {
         add("HOUSING", "အိမ်ငှားခြင်း", "Penat gila panjat tangga.", "ပနတ် ဂီလာ ပန်ဂျတ် တန်းဂါ။", "လှေကားတက်ရတာ မောလိုက်တာဗျာ။", "Exhausted climbing the stairs.", "'Penat' = tired/exhausted.")
 
         // ==========================================
-        // 7. NUMBERS & TIME (ဂဏန်း၊ ငွေကြေး၊ အချိန်) - 50 phrases
+        // 7. NUMBERS & TIME (ဂဏန်းနှင့်အချိန်) - 50 original phrases
         // ==========================================
         add("NUMBERS_TIME", "ဂဏန်းနှင့်အချိန်", "Satu, dua, tiga, empat, lima.", "ဆာတူ၊ ဒူဝါ၊ တီးဂါ၊ အမ်ပတ်၊ လီမာ။", "၁၊ ၂၊ ၃၊ ၄၊ ၅။", "One, two, three, four, five.", "Numbers 1 to 5.")
         add("NUMBERS_TIME", "ဂဏန်းနှင့်အချိန်", "Enam, tujuh, lapan, sembilan, sepuluh.", "အနမ်၊ တူးဂျို့ဟ်၊ လာပန်၊ ဆမ်ဘီလန်၊ စပူးလူး။", "၆၊ ၇၊ ၈၊ ၉၊ ၁၀။", "Six, seven, eight, nine, ten.", "Numbers 6 to 10.")
@@ -467,11 +473,11 @@ object PhraseSeedData {
         add("NUMBERS_TIME", "ဂဏန်းနှင့်အချိန်", "Jangan buang masa main telefon.", "ဂျာငန် ဘူဝမ် မာဆာ မိုင်း တလီဖွန်။", "ဖုန်းကလိပြီး အချိန်မဖြုန်းပါနဲ့။", "Don't waste time on the phone.", "'Buang masa' = waste time.")
 
         // ==========================================
-        // 8. HEALTH & EMERGENCY (ကျန်းမာရေးနှင့် အရေးပေါ်) - 50 phrases
+        // 8. HEALTH & EMERGENCY (ကျန်းမာရေး) - 50 original phrases
         // ==========================================
-        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Saya rasa tak sihat / demam.", "ဆာယာ ရာဆာ တက် ဆီဟတ် / ဒမမ်။", "ကျွန်တော် နေမကောင်းဘူး / ဖျားနေပါတယ်။", "I feel unwell / got fever.", "'Demam' = fever.")
-        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Kepala saya sakit gila / pening.", "ကပါလာ ဆာယာ ဆာကစ် ဂီလာ / ပနင်း။", "ကျွန်တော့်ခေါင်း အရမ်းကိုက်ပြီး မူးဝေနေတယ်။", "My head hurts crazy / dizzy.", "'Sakit kepala' = headache; 'Pening' = dizzy.")
-        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Perut saya memulas / cirit-birit.", "ပရွတ် ဆာယာ မမူးလတ်စ် / ချီရစ်-ဘီရစ်။", "ဗိုက်ရစ်နာပြီး ဝမ်းလျှောနေပါတယ်။", "My stomach twists / having diarrhea.", "'Cirit-birit' = diarrhea.")
+        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Saya rasa tak sihat, demam.", "ဆာယာ ရာဆာ တက် ဆီဟတ်၊ ဒမမ်။", "ကျွန်တော် နေမကောင်းဘူး၊ ဖျားနေပါတယ်။", "I feel unwell and feverish.", "'Demam' = fever.")
+        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Kepala saya sakit dan pening.", "ကပါလာ ဆာယာ ဆာကစ် ဒန် ပနင်း။", "ကျွန်တော့်ခေါင်း ကိုက်ပြီး မူးဝေနေတယ်။", "My head hurts and I feel dizzy.", "'Sakit kepala' = headache; 'pening' = dizzy.")
+        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Perut saya memulas, cirit-birit.", "ပရွတ် ဆာယာ မမူးလတ်စ်၊ ချီရစ်-ဘီရစ်။", "ဗိုက်ရစ်နာပြီး ဝမ်းလျှောနေပါတယ်။", "My stomach is cramping and I have diarrhoea.", "'Cirit-birit' = diarrhoea.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Tekak saya sakit, batuk kering.", "တကတ်ခ် ဆာယာ ဆာကစ်၊ ဘာတုတ်ခ် ကရင်း။", "လည်ချောင်းနာပြီး ချောင်းခြောက်ဆိုးနေတယ်။", "My throat hurts, dry cough.", "'Batuk' = cough.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Selsema teruk, hidung tersumbat.", "ဆယ်လ်စမာ တရုတ်ခ်၊ ဟီဒုန်း တာရ်ဆွမ်ဘတ်။", "နှာစေးဆိုးရွားပြီး နှာခေါင်းပိတ်နေတယ်။", "Bad flu/cold, blocked nose.", "'Selsema' = flu/cold.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Kat mana ada klinik berdekatan?", "ကတ် မာနာ အာဒါ ကလင်နစ်ခ် ဘာရ်ဒကတ်တန်?", "အနီးအနားမှာ ဆေးခန်း ဘယ်နားရှိသလဲခင်ဗျာ။", "Where is a nearby clinic?", "'Klinik' = clinic.")
@@ -484,36 +490,36 @@ object PhraseSeedData {
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Dah tiga hari tak kebah demam.", "ဒါ တီးဂါ ဟာရီ တက် ကဘဟ် ဒမမ်။", "အဖျားမကျတာ ၃ ရက် ရှိပါပြီ။", "Fever has not subsided for three days.", "'Tak kebah' = fever hasn't dropped.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Ada alahan ubat apa-apa tak?", "အာဒါ အာလာဟန် အူးဘတ် အာပါ-အာပါ တက်?", "မတည့်တဲ့ ဆေးမျိုး ရှိသလားခင်ဗျာ။", "Do you have any drug allergies?", "'Alahan' = allergy.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Saya tak ada alahan ubat.", "ဆာယာ တက် အာဒါ အာလာဟန် အူးဘတ်။", "ကျွန်တော့်မှာ မတည့်တဲ့ဆေး မရှိပါဘူး။", "I don't have any drug allergies.", "No allergy confirmation.")
-        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Alahan ubat antibiotik penicillin.", "အာလာဟန် အူးဘတ် အန်တီဘိုင်အိုတစ်ခ် ပင်နီစီလင်။", "ပနယ်စလင် ပဋိဇီဝဆေးနဲ့ ဓာတ်မတည့်ပါဘူး။", "Allergic to penicillin antibiotic.", "Specific allergy.")
+        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Saya alah kepada antibiotik penicillin.", "ဆာယာ အာလာဟ် ကပါဒါ အန်တီဘိုင်အိုတစ်ခ် ပင်နီစီလင်။", "ကျွန်တော် ပင်နီစလင် ပဋိဇီဝဆေးနဲ့ ဓာတ်မတည့်ပါဘူး။", "I am allergic to penicillin antibiotics.", "'Alah' is the natural verb for being allergic.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Makan ubat ni tiga kali sehari lepas makan.", "မာကန် အူးဘတ် နီ တီးဂါ ကာလီ စဟာရီ လပတ်စ် မာကန်။", "ဒီဆေးကို အစာစားပြီး တစ်နေ့ ၃ ကြိမ် သောက်ပါ။", "Take this medicine 3 times a day after meals.", "Dosage instruction.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Ubat ni kena habiskan semua ya.", "အူးဘတ် နီ ကနာ ဟာဘစ်စ်ကန် စမွား ယာ။", "ဒီပဋိဇီဝဆေးကို အကုန်ကုန်အောင် သောက်ရမယ်နော်။", "Must finish all of this medicine.", "Finish antibiotic course.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Ubat ni buat mengantuk gila.", "အူးဘတ် နီ ဘွတ် မင်ငန်တုတ်ခ် ဂီလာ။", "ဒီဆေးက အရမ်း အိပ်ငိုက်စေတယ်။", "This medicine causes crazy drowsiness.", "'Mengantuk' = drowsy/sleepy.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Jangan memandu lepas makan ubat ni.", "ဂျာငန် မမန်ဒူး လပတ်စ် မာကန် အူးဘတ် နီ။", "ဒီဆေးသောက်ပြီး ကားမမောင်းပါနဲ့။", "Do not drive after taking this medicine.", "Caution.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Tolong bagi surat MC dua hari.", "တိုလွန်း ဘာဂီ စူးရတ် အမ်စီ ဒူဝါ ဟာရီ။", "၂ ရက်စာ MC ဆေးခွင့်စာရွက် ထုတ်ပေးပါခင်ဗျာ။", "Please give 2 days MC medical certificate.", "Requesting MC.")
-        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Farmasi Watson atau Guardian kat depan.", "ဖာရ်မာဆီ ဝက်စ်ဆန် အာတောင် ဂါးဒီးယန်း ကတ် ဒပန်။", "ရှေ့နားမှာ Watsons ဒါမှမဟုတ် Guardian ဆေးဆိုင် ရှိတယ်။", "Watson or Guardian pharmacy is ahead.", "Retail pharmacies in Malaysia.")
-        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Nak beli Panadol / Paracetamol satu papan.", "နတ် ဘလီ ပါနာဒေါလ် / ပါရာစီတမောလ် ဆာတူ ပါပန်။", "ပါရာစီတမော တစ်ကတ် ဝယ်ချင်လို့ပါ။", "Want to buy one strip of Panadol.", "'Panadol' = paracetamol.")
+        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Farmasi Watsons atau Guardian kat depan.", "ဖာရ်မာဆီ ဝက်စ်ဆန် အာတောင် ဂါးဒီးယန်း ကတ် ဒပန်။", "ရှေ့နားမှာ Watsons ဒါမှမဟုတ် Guardian ဆေးဆိုင် ရှိတယ်။", "Watsons or Guardian pharmacy is ahead.", "Watsons and Guardian are the common retail pharmacy chains.")
+        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Nak beli Panadol satu papan.", "နတ် ဘလီ ပါနာဒေါလ် ဆာတူ ပါပန်။", "ပါနာဒေါ တစ်ကတ် ဝယ်ချင်လို့ပါ။", "I want to buy one strip of Panadol.", "'Papan' here means a blister strip; Panadol is a brand name for paracetamol.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Koyok pelekat sakit pinggang ada tak?", "ကိုယော့ခ် ပလက်ကတ် ဆာကစ် ပင်းဂန်း အာဒါ တက်?", "ခါးနာကပ်ခွာ ပလာစတာ ရှိလား။", "Got pain relief plaster for backache?", "'Koyok' = pain plaster.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Minyak angin cap kapak bagus.", "မင်ညတ်ခ် အာငင် ချပ်ပ် ကာပတ်ခ် ဘာဂုစ်။", "ပုဆိန်တံဆိပ် လေဆေးဆီက ကောင်းတယ်။", "Axe brand medicated oil is good.", "'Minyak angin' = medicated oil.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Tangan saya luka berdarah banyak!", "တာငန် ဆာယာ လူကား ဘာရ်ဒါရားဟ် ဘာညတ်!", "ကျွန်တော့်လက် ဓားရှပြီး သွေးတွေ အများကြီးထွက်နေတယ်!", "My hand is cut and bleeding a lot!", "'Berdarah' = bleeding.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Tolong balut luka dengan kain bersih.", "တိုလွန်း ဘာလွတ် လူကား ဒငန် ကိုင်း ဘာရ်ဆီးဟ်။", "ဒဏ်ရာကို သန့်ရှင်းတဲ့အဝတ်နဲ့ အမြန် စည်းပေးပါ။", "Please bandage the wound with clean cloth.", "'Balut' = bandage.")
-        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Kaki saya terseliuh / patah!", "ကာကီ ဆာယာ တာရ်စလီးယူးဟ် / ပါတာ့ဟ်!", "ကျွန်တော့်ခြေထောက် မျက်စိလည်/ကျိုး သွားပြီ ထင်တယ်!", "My leg is sprained / broken!", "'Terseliuh' = sprained; 'Patah' = fractured.")
+        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Kaki saya terseliuh teruk!", "ကာကီ ဆာယာ တာရ်စလီးယူးဟ် တရုတ်ခ်!", "ကျွန်တော့်ခြေထောက် အရမ်း လိမ်သွားပြီ!", "My leg is badly sprained!", "'Terseliuh' = sprained; use 'patah' only if a fracture is suspected.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Jangan gerak, saya panggil ambulans!", "ဂျာငန် ဂရတ်ခ်၊ ဆာယာ ပန်းဂီးလ် အမ်ဗျူလန့်စ်!", "မလှုပ်ပါနဲ့၊ ကျွန်တော် လူနာတင်ယာဉ် အခု လှမ်းခေါ်လိုက်မယ်!", "Don't move, I will call the ambulance!", "'Ambulans' = ambulance.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Nombor kecemasan Malaysia 999.", "နွမ်ဘောရ် ကချာမာဆန် မလေးရှား ၉၉၉။", "မလေးရှား အရေးပေါ်ဖုန်းနံပါတ်က ၉၉၉ ပါ။", "Malaysia emergency phone number is 999.", "Emergency hotline.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Tolong, ada orang pengsan kat sini!", "တိုလွန်း၊ အာဒါ အိုရန်း ပန်းဆန် ကတ် ဆီနီ!", "ကယ်ကြပါဦး၊ ဒီမှာ လူတစ်ယောက် သတိလစ် မေ့မြောနေလို့ပါ!", "Help, someone fainted unconscious here!", "'Pengsan' = fainted.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Dia tak bernafas, buat CPR segera!", "ဒီယာ တက် ဘာရ်နာဖတ်စ်၊ ဘွတ် စီပီအာရ် စဂရာ!", "သူ အသက်မရှူတော့ဘူး၊ အရေးပေါ် CPR ချက်ချင်းလုပ်ပါ!", "He is not breathing, perform CPR immediately!", "CPR emergency.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Bomba! Ada kebakaran besar kat kilang!", "ဘွန်ဘာ! အာဒါ ကဘာကာရန် ဘဆာရ် ကတ် ကီလန်း!", "မီးသတ်ကား အမြန်ခေါ်ပေးပါ! စက်ရုံမှာ မီးလောင်နေပြီ!", "Fire brigade! Huge fire at the factory!", "'Bomba' = fire department.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Keluar ikut pintu kecemasan sekarang!", "ကလူဝါးရ် အီကုတ် ပင်တူး ကချာမာဆန် စကားရန်း!", "အရေးပေါ် ထွက်ပေါက်ကနေ အခုပဲ အပြင်ထွက်ကြ!", "Evacuate through emergency exit now!", "Evacuation order.")
-        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Polis! Tolong ada peragut ragut beg!", "ပိုလစ်စ်! တိုလွန်း အာဒါ ပရာဂွတ် ရာဂွတ် ဘတ်ခ်!", "ရဲရေ ကယ်ပါဦး! လုယက်သူက လွယ်အိတ်ကို လုပြေးသွားလို့ပါ!", "Police! Snatch thief snatched my bag!", "'Peragut' = snatch thief.")
+        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Polis! Beg saya kena ragut!", "ပိုလစ်စ်! ဘတ်ခ် ဆာယာ ကနာ ရာဂွတ်!", "ရဲရေ ကယ်ပါဦး! ကျွန်တော့်လွယ်အိတ် လုယက်ခံလိုက်ရပြီ!", "Police! My bag has been snatched!", "'Ragut' = snatch theft.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Dompet dan telefon saya kena curi.", "ဒွမ်ပတ် ဒန် တလီဖွန် ဆာယာ ကနာ ချူးရီ။", "ကျွန်တော့် ပိုက်ဆံအိတ်နဲ့ ဖုန်း အခိုးခံရပါတယ်။", "My wallet and phone were stolen.", "'Curi' = stolen.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Kena buat laporan kat balai polis.", "ကနာ ဘွတ် လာပိုရန် ကတ် ဘာလိုင်း ပိုလစ်စ်။", "ရဲစခန်းမှာ အမှုဖွင့် တိုင်ကြားရမယ်။", "Must make a report at the police station.", "'Balai polis' = police station.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Pegawai polis minta salinan pasport.", "ပဂါဝါိုင် ပိုလစ်စ် မင်တာ ဆာလီနန် ပါ့စ်ပို့။", "ရဲအရာရှိက ပတ်စ်ပို့မိတ္တူ တောင်းပါတယ်။", "Police officer asked for passport copy.", "Police statement.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Saya mangsa rompakan jalanan.", "ဆာယာ မန်းဆာ ရွန်ပါကန် ဂျာလာနန်။", "ကျွန်တော်က လမ်းပေါ်မှာ ဓားပြတိုက် လုယက်ခံရတဲ့ ဒုက္ခသည်ပါ။", "I am a victim of street robbery.", "'Mangsa' = victim.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Jangan lawan kalau ada senjata.", "ဂျာငန် လာဝမ် ကာလောင် အာဒါ ဆန်ဂျာတာ။", "လက်နက်ပါရင် ပြန်မခုခံပါနဲ့။", "Don't fight back if they have weapons.", "Safety advice.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Serah duit, nyawa lagi berharga.", "စရာဟ် ဒွစ်၊ ညာဝါ လာဂီ ဘာရ်ဟာရ်ဂါ။", "ပိုက်ဆံပေးလိုက်၊ အသက်က ပိုတန်ဖိုးရှိတယ်။", "Hand over money, life is more valuable.", "'Nyawa' = life.")
-        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Hospital Kuala Lumpur (HKL) kat Chow Kit.", "ဟော့စပီတယ်လ် ကွာလာလမ်ပူရ် ကတ် ချောင်ကစ်။", "HKL အထွေထွေဆေးရုံကြီးက Chow Kit မှာ ရှိပါတယ်။", "Kuala Lumpur Hospital (HKL) is at Chow Kit.", "Major hospital.")
+        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Hospital Sultanah Aminah (HSA) kat Johor Bahru.", "ဟော့စပီတယ်လ် ဆူလတာနာ အမိနာ (အိပ်ခ်ျအက်စ်အေ) ကတ် ဂျိုဟော ဘာရူး။", "ဆူလတာနာ အမိနာ ဆေးရုံ (HSA) က ဂျိုဟော ဘာရူး မှာ ရှိပါတယ်။", "Hospital Sultanah Aminah (HSA) is in Johor Bahru.", "HSA is the main government hospital in Johor Bahru.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Wad kecemasan zon merah.", "ဝဒ် ကချာမာဆန် ဇွန် မာရားဟ်။", "အနီရောင်အဆင့် အရေးပေါ် လူနာဆောင်။", "Emergency ward Red Zone (critical).", "'Zon merah' = red trauma zone.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Kena masuk wad untuk pembedahan.", "ကနာ မာဆုတ်ခ် ဝဒ် အွန်တုတ်ခ် ပမ်ဘဒါဟန်။", "ခွဲစိတ်ကုသဖို့ ဆေးရုံတက်ရပါမယ်။", "Must be admitted for surgery.", "'Pembedahan' = surgery.")
-        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Insurans majikan cover kos rawatan tak?", "အင်ရှူးရန့်စ် မာဂျီကန် ကာဗာ ကော့စ် ရာဝါတန် တက်?", "ကုသစရိတ်ကို အလုပ်ရှင် အာမခံက ကာမိသလား။", "Does employer insurance cover treatment cost?", "Medical insurance.")
+        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Insurans majikan tanggung kos rawatan tak?", "အင်ရှူးရန့်စ် မာဂျီကန် တန်းဂွန်း ကော့စ် ရာဝါတန် တက်?", "ကုသစရိတ်ကို အလုပ်ရှင် အာမခံက ကျခံပေးသလား။", "Does the employer's insurance cover the treatment cost?", "'Tanggung' = bear/cover a cost.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "SPIKPA cover pekerja asing.", "စပစ်ခ်ပါ ကာဗာ ပကာဂျာ အာဆင်း။", "SPIKPA အာမခံက နိုင်ငံခြားအလုပ်သမားတွေကို ကာကွယ်ပေးတယ်။", "SPIKPA health insurance covers foreign workers.", "Foreign worker insurance scheme.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Bawa kad insurans ke kaunter hospital.", "ဘာဝါ ကတ် အင်ရှူးရန့်စ် က ဆေးရုံကောင်တာ။", "အာမခံကတ်ကို ဆေးရုံကောင်တာဆီ ယူသွားပါ။", "Bring insurance card to hospital counter.", "Insurance procedure.")
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Semoga cepat sembuh ya kawan.", "စမိုဂါ ချပတ် ဆမ်ဘူးဟ် ယာ ကာဝမ်။", "အမြန်ဆုံး သက်သာပျောက်ကင်းပါစေ အပေါင်းအသင်း။", "Wishing you a speedy recovery, friend.", "'Cepat sembuh' = get well soon.")
@@ -521,9 +527,9 @@ object PhraseSeedData {
         add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Rehat secukupnya kat rumah.", "ရာဟတ် စချူးကုတ်ခ်ညာ ကတ် ရူးမဟ်။", "အိမ်မှာ အနားယူမှု အပြည့်အဝ ယူပါ။", "Rest adequately at home.", "Recovery advice.")
 
         // ==========================================
-        // 9. DAILY LIFE & SERVICES (နေ့စဉ်လူနေမှုနှင့် ဘဏ်) - 45 phrases
+        // 9. DAILY LIFE & SERVICES (နေ့စဉ်လူနေမှု) - 44 original phrases
         // ==========================================
-        add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Mesin ATM Maybank kat mana ya?", "မဲဆင်း အေတီအမ် မေဘဏ် ကတ် မာနာ ယာ?", "Maybank ATM စက် ဘယ်နားမှာလဲခင်ဗျာ။", "Where is the Maybank ATM machine?", "'Maybank' = largest Malaysian bank.")
+        add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "ATM Maybank kat mana ya?", "အေတီအမ် မေဘဏ် ကတ် မာနာ ယာ?", "Maybank ATM စက် ဘယ်နားမှာလဲခင်ဗျာ။", "Where is the Maybank ATM?", "'ATM' already means automated teller machine, so 'mesin ATM' is redundant.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Saya nak keluarkan duit tunai.", "ဆာယာ နတ် ကလူဝါးရ်ကန် ဒွစ် တူနိုင်း။", "ကျွန်တော် ငွေသား ထုတ်ယူချင်လို့ပါ။", "I want to withdraw cash.", "'Keluarkan duit' = withdraw cash.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Mesin ni rosak, duit sangkut kat dalam!", "မဲဆင်း နီ ရိုဆတ်ခ်၊ ဒွစ် ဆန်းကွတ် ကတ် ဒါလမ်!", "စက်ပျက်နေတယ်၊ ပိုက်ဆံ အတွင်းမှာ ညပ်နေတယ်!", "Machine is broken, cash is stuck inside!", "'Duit sangkut' = stuck cash.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Simpan resit dan telefon bank segera.", "ဆင်ပန် ရီဆစ် ဒန် တလီဖွန် ဘဏ် စဂရာ။", "ပြေစာဘောက်ချာ သိမ်းပြီး ဘဏ်ကို ချက်ချင်း ဖုန်းဆက်ပါ။", "Keep receipt and call bank immediately.", "Bank assistance.")
@@ -532,7 +538,7 @@ object PhraseSeedData {
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Berapa kadar pertukaran hari ni?", "ဘရာပါ ကာဒါ ပါရ်တူကာရန် ဟာရီ နီ?", "ဒီနေ့ ငွေလဲနှုန်း ဘယ်လောက်လဲ။", "What is the exchange rate today?", "'Kadar pertukaran' = exchange rate.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Satu ringgit dapat berapa kyat?", "ဆာတူ ရင်းဂစ် ဒါပတ်ခ် ဘရာပါ ကျပ်?", "၁ ရင်းဂစ်ကို မြန်မာငွေ ဘယ်နှစ်ကျပ် ရမလဲ။", "How many kyats for one ringgit?", "Currency rate.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Berapa caj perkhidmatan hantar wang?", "ဘရာပါ ချာ့ဂ်ျ ပါရ်ခစ်ဒ်မာတန် ဟန်တာ ဝမ်?", "ငွေလွှဲခ ဝန်ဆောင်ခ ဘယ်လောက် ပေးရလဲ။", "How much is the remittance service fee?", "'Caj perkhidmatan' = service fee.")
-        add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Hantar guna nombor akaun KPay / WavePay.", "ဟန်တာ ဂူနာ နွမ်ဘောရ် အကောင့် ကေပေး / ဝေ့ဗ်ပေး။", "KPay ဒါမှမဟုတ် WavePay အကောင့်နဲ့ လွှဲပေးပါ။", "Send via KPay or WavePay account.", "Myanmar payment methods.")
+        add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Hantar guna akaun KPay atau WavePay.", "ဟန်တာ ဂူနာ အကောင့် ကေပေး အာတောင် ဝေ့ဗ်ပေး။", "KPay ဒါမှမဟုတ် WavePay အကောင့်နဲ့ လွှဲပေးပါ။", "Send it via a KPay or WavePay account.", "Common Myanmar mobile wallet methods.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Duit sampai dalam masa sepuluh minit.", "ဒွစ် ဆမ်ပိုင်း ဒါလမ် မာဆာ စပူးလူး မိနစ်။", "၁၀ မိနစ်အတွင်း ငွေရောက်ပါမယ်။", "Money arrives within ten minutes.", "Speed of remittance.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Simpan slip resit bukti pemindahan.", "ဆင်ပန် စလစ်ပ် ရီဆစ် ဘွတ်ခ်တီ ပမင်ဒါဟန်။", "ငွေလွှဲအထောက်အထား ဘောက်ချာကို သေချာသိမ်းပါ။", "Keep receipt slip as proof of transfer.", "Proof of transfer.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Kedai gunting rambut kat tingkat dua.", "ကဒိုင်း ဂွန်းတင် ရမ်ဘွတ် ကတ် တင်ကတ် ဒူဝါ။", "ဆံပင်ညှပ်ဆိုင်က ဒုတိယထပ်မှာပါ။", "Barbershop is on the second floor.", "'Gunting rambut' = haircut.")
@@ -546,12 +552,12 @@ object PhraseSeedData {
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Mesin basuh 14kg sepuluh ringgit.", "မဲဆင်း ဘာဆူးဟ် ၁၄ ကီလို စပူးလူး ရင်းဂစ်။", "၁၄ ကီလို အဝတ်လျှော်စက်က ၁၀ ရင်းဂစ်ပါ။", "14kg washing machine is 10 ringgit.", "Laundry price.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Mesin pengering panas dua puluh lima minit.", "မဲဆင်း ပန်ငရင်း ပါနတ်စ် ဒူဝါ ပူးလူး လီမာ မိနစ်။", "အဝတ်အခြောက်ခံစက် ၂၅ မိနစ် ကြာပါတယ်။", "Hot dryer runs for twenty-five minutes.", "'Pengering' = dryer.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Beli sabun basuh dan pelembut kain.", "ဘလီ ဆာဘွန် ဘာဆူးဟ် ဒန် ပလမ်ဘွတ် ကိုင်း။", "ဆပ်ပြာမှုန့်နဲ့ အဝတ်ပျော့ဆေးရည် ဝယ်ပါ။", "Buy detergent powder and fabric softener.", "Laundry supplies.")
-        add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Pusat beli-belah Mid Valley besar gila.", "ပူးဆတ် ဘလီ-ဘလတ် မစ်ဒ်ဗာလီ ဘဆာရ် ဂီလာ။", "Mid Valley ကုန်တိုက်ကြီးက အကြီးကြီးပဲဗျာ။", "Mid Valley shopping mall is crazy huge.", "Prominent mall.")
+        add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Pusat beli-belah Mid Valley Southkey besar gila.", "ပူးဆတ် ဘလီ-ဘလတ် မစ်ဒ်ဗာလီ ဆောက်သကီး ဘဆာရ် ဂီလာ။", "Mid Valley Southkey ကုန်တိုက်ကြီးက အရမ်းကြီးပါတယ်။", "Mid Valley Southkey mall is huge.", "Mid Valley Southkey is the Johor Bahru branch of the mall.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Ada promosi jualan murah hujung tahun.", "အာဒါ ပရိုမိုဆီ ဂျူဝါလန် မူးရားဟ် ဟူးဂျွန်း တာဟွန်း။", "နှစ်ကုန် အထူးဈေးလျှော့ရောင်းပွဲ ရှိတယ်။", "Got year-end clearance sale promotion (Year-end sale).", "'Jualan murah' = sale / discount.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Potongan harga sampai lima puluh peratus.", "ပိုတုန်းငန် ဟာရ်ဂါ ဆမ်ပိုင်း လီမာ ပူးလူး ပရာတုစ်။", "၅၀ ရာခိုင်နှုန်းအထိ ဈေးလျှော့ပေးတယ်။", "Discounts up to fifty percent.", "'Peratus' = percent.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Econsave dan Lotus's barang murah.", "အီကွန်ဆေ့ဗ် ဒန် လိုတပ်စ် ဘာရန်း မူးရားဟ်။", "Econsave နဲ့ Lotus's ကုန်တိုက်တွေက ပစ္စည်းဈေးချိုတယ်။", "Econsave and Lotus's hypermarkets have cheap groceries.", "Value hypermarkets.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Beli barang dapur banyak jimat.", "ဘလီ ဘာရန်း ဒါပူးရ် ဘာညတ် ဂျီမတ်။", "မီးဖိုချောင်သုံးပစ္စည်း အများကြီး သက်သာစေတယ်။", "Saves a lot buying kitchen supplies in bulk.", "'Jimat' = save money.")
-        add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Top up simkad Hotlink / Celcom / Digi.", "တော့ပ်အပ် ဆင်မ်ကတ်ဒ် ဟော့တ်လင့်ခ် / ဆဲလ်ကွန် / ဒစ်ဂျီ။", "Hotlink / Celcom / Digi ဖုန်းကတ် ငွေဖြည့်မယ်။", "Top up Hotlink / Celcom / Digi SIM card.", "Major telecom telcos.")
+        add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Top up simkad Celcom.", "တော့ပ်အပ် ဆင်မ်ကတ်ဒ် ဆဲလ်ကွန်။", "Celcom ဖုန်းကတ် ငွေဖြည့်မယ်။", "I want to top up my Celcom SIM card.", "Swap in your own telco; 'top up' is the usual word.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Beli pelan data internet sebulan tiga puluh ringgit.", "ဘလီ ပလန် ဒါတာ အင်တာနက် စဘူးလန် တီးဂါ ပူးလူး ရင်းဂစ်။", "တစ်လ ၃၀ ရင်းဂစ် အင်တာနက်ဒေတာ ပက်ကေ့ခ်ျ ဝယ်ပါ။", "Buy 30 ringgit monthly internet data plan.", "Prepaid data plan.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Data internet unlimited laju gila.", "ဒါတာ အင်တာနက် အန်လစ်မိတက်ဒ် လာဂျူ ဂီလာ။", "အကန့်အသတ်မရှိ အင်တာနက်လိုင်းက အရမ်းမြန်တယ်။", "Unlimited high-speed internet data.", "'Laju' = fast.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Kredit telefon dah habis, tak boleh call.", "ခရက်ဒစ် တလီဖွန် ဒါ ဟာဘစ်စ်၊ တက် ဘိုလဲ ကောလ်။", "ဖုန်းဘေလ်ကုန်သွားလို့ ဖုန်းခေါ်လို့မရတော့ဘူး။", "Phone credit finished, cannot call.", "'Kredit habis' = out of balance.")
@@ -567,16 +573,15 @@ object PhraseSeedData {
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Joging waktu petang rasa segar.", "ဂျော့ဂင် ဝါ့က်တူ ပတန်း ရာဆာ စဂါရ်။", "ညနေဘက် အပြေးလေ့ကျင့်ရတာ လန်းဆန်းစေတယ်။", "Jogging in the evening feels refreshing.", "Exercise.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Cuaca Malaysia panas dan lembap.", "ချူဝါချာ မလေးရှား ပါနတ်စ် ဒန် လမ်ဘတ်။", "မလေးရှား ရာသီဥတုက ပူအိုက်စွတ်စိုတယ်။", "Malaysia weather is hot and humid.", "Tropical climate.")
         add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Selalu bawa payung sebelum hujan.", "ဆလာလူ ဘာဝါ ပါယုန်း စဘလွမ် ဟူးဂျန်။", "မိုးမရွာခင် ထီးအမြဲ ကြိုဆောင်ထားပါ။", "Always carry an umbrella before it rains.", "Proverb & daily habit.")
-        add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Sediakan payung sebelum hujan.", "စဒီယာကန် ပါယုန်း စဘလွမ် ဟူးဂျန်။", "မိုးမရွာခင် ထီးကြိုပြင်ထားပါ။ (သတိမမူ ဂူမမြင်)", "Prepare umbrella before rain (prevention is better than cure).", "Famous Malay idiom.")
 
         // ==========================================
-        // 10. SLANG & PARTICLES (စကားပြောကာရန်များနှင့် အလှည့်အပတ်များ) - 40 phrases
+        // 10. SLANG & PARTICLES (ကာရန်အသုံးများ) - 31 original phrases
         // ==========================================
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Boleh lah! / Tak boleh lah!", "ဘိုလဲ လာ့! / တက် ဘိုလဲ လာ့!", "ရတာပေါ့ကွာ! / မရဘူးဗျာ!", "Can lah! / Cannot lah!", "'Lah' is the most ubiquitous Malaysian emphasis particle.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Betul kan? / Bukan kan?", "ဘတူးလ် ကန်? / ဘူးကန် ကန်?", "ဟုတ်တယ်မဟုတ်လား? / မဟုတ်ဘူးမလား?", "Correct, right? / Not true, right?", "'Kan' seeks confirmation from the listener.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Jom kita gerak sekarang!", "ဂျွမ် ကီတာ ဂရတ်ခ် စကားရန်း!", "ကဲ အခုပဲ ထွက်ကြစို့!", "Let's move out right now!", "'Gerak' means move/head out in street slang.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Alamak! Saya terlupa bawa dompet!", "အာလာမတ်ခ်! ပိုက်ဆံအိတ် ယူလာဖို့ မေ့သွားတယ်!", "Oh no! I forgot to bring my wallet!", "'Alamak' expresses sudden shock or dismay.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Aiyo, kenapa lambat sangat ni?", "အိုင်ယို၊ ဘာလို့ ဒီလောက် နောက်ကျနေရတာလဲ?", "Aiyo, why are you so late?", "'Aiyo' expresses exasperation or impatience.")
+        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Alamak! Saya terlupa bawa dompet!", "အာလာမတ်ခ်! ဆာယာ တာရ်လူပါ ဘာဝါ ဒွမ်ပတ်!", "အာလာမတ်ခ်! ပိုက်ဆံအိတ် ယူလာဖို့ မေ့သွားတယ်!", "Oh no! I forgot to bring my wallet!", "'Alamak' expresses sudden shock or dismay.")
+        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Aiyo, kenapa lambat sangat ni?", "အိုင်ယို၊ ကနာပါ လမ်ဘတ် ဆာငတ် နီ?", "အိုင်ယို၊ ဘာလို့ ဒီလောက် နောက်ကျနေရတာလဲ?", "Aiyo, why are you so late?", "'Aiyo' expresses exasperation or impatience.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Rilek lah brader, jangan kalut.", "ရီလက်စ် လာ့ ဘရာဒါ၊ ဂျာငန် ကာလွတ်။", "စိတ်အေးအေးထားပါ ညီအစ်ကိုရာ၊ မလောပါနဲ့။", "Relax brother, don't panic.", "'Jangan kalut' = don't panic / rush.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Padu gila makanan kat sini!", "ပါဒူး ဂီလာ မာကာနန် ကတ် ဆီနီ!", "ဒီဆိုင်က အစားအသောက်တွေကတော့ ရှယ်အမိုက်စားပဲ!", "The food here is crazily solid/epic!", "'Padu' = top-tier / solid.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Mantap boss, terbaik!", "မန်တပ် ဘော့စ်၊ တာရ်ဘာအစ်ခ်!", "လန်းတယ် သူဌေးရေ၊ အကောင်းဆုံးပဲ!", "Awesome boss, the very best!", "'Mantap' = fantastic.")
@@ -585,33 +590,40 @@ object PhraseSeedData {
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Member tolong cover kerja tadi.", "မန်ဘာ တိုလွန်း ကာဗာ ကာဂျာ တာဒီ။", "ခုနက ဘော်ဒါက အလုပ် ကူကာဗာပေးသွားတယ်။", "My buddy helped cover my work earlier.", "'Member' = close friend/buddy.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Member sejati takkan tikam belakang.", "မန်ဘာ စဂျာတီ တက်ကန် တီကမ် ဘလာကန်း။", "မိတ်ဆွေစစ်က နောက်ကျော ဓားနဲ့မထိုးဘူး။", "True friends never stab you in the back.", "'Tikam belakang' = backstab.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Sempoi gila kedai mamak ni.", "ဆန်ပွိုင်း ဂီလာ ကဒိုင်း မာမတ်ခ် နီ။", "ဒီမာမတ်ဆိုင်လေးက အရမ်း အေးအေးလူလူနဲ့ နေလို့ကောင်းတယ်။", "This mamak stall is super chill/laid-back.", "'Sempoi' = chill/effortlessly cool.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "On x on malam ni?", "အွန် တာ့ခ် အွန် မာလမ် နီ?", "ဒီည လာမှာလား မလာဘူးလား (ဂိမ်း/စားသောက်ပွဲ)?", "Are you in or out tonight?", "Modern youth slang for 'Are you joining?'")
+        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "On tak malam ni?", "အွန် တက် မာလမ် နီ?", "ဒီည လာမှာလား။", "Are you in tonight?", "'On' is youth slang for joining an outing.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Mestilah on, bila lagi!", "မက်စ်တီလာ့ အွန်၊ ဘီလာ လာဂီ!", "သေချာပေါက် ပါတာပေါ့၊ နောက်ဘယ်တော့ ရှိဦးမှာလဲ!", "Definitely on, when else!", "Affirmative party response.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Kowtim dah semua urusan.", "ကောင်တိမ် ဒါ စမွား အူးရူးဆန်။", "ကိစ္စအားလုံး အဆင်ပြေပြေ ရှင်းပြီးသွားပြီ။", "Everything is settled and dealt with.", "'Kowtim' (from Cantonese) = settled.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Hal kecik boleh kowtim punya.", "ဟာလ် ကချစ်ခ် ဘိုလဲ ကောင်တိမ် ပူးညာ။", "ကိစ္စသေးသေးလေး ညှိလို့ရပါတယ်ဗျာ။", "Small matter can easily be settled.", "Conflict resolution phrase.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Jangan sembang kencang lah!", "ဂျာငန် ဆန်ဘန်း ကန်ချန်း လာ့!", "လေလုံးတွေ အရမ်းမထွားပါနဲ့ကွာ!", "Don't talk big / boast!", "'Sembang kencang' = talk big / boast.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Cakap kosong tak ada faedah.", "ချာကပ်ခ် ကိုဆွန်း တက် အာဒါ ဖာအီဒါဟ်။", "အလကား စကားအလွတ်ပြောနေတာ ဘာအကျိုးမှ မရှိဘူး။", "Empty talk is useless.", "'Cakap kosong' = empty talk.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Buat kerja laju sikit, jangan slow!", "ဘွတ် ကာဂျာ လာဂျူ ဆီကစ်၊ ဂျာငန် စလို!", "အလုပ် နည်းနည်း မြန်မြန်လုပ်၊ လေးမနေနဲ့!", "Work faster, don't be slow!", "Urging pace.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Mat Salleh sesat jalan kat KLCC.", "မတ် ဆာလဲ စဆတ် ဂျာလန် ကတ် ကေအယ်လ်စီစီ။", "လူဖြူနိုင်ငံခြားသား KLCC မှာ လမ်းပျောက်နေတယ်။", "Caucasian tourist lost way at KLCC.", "'Mat Salleh' = Caucasian westerner.")
+        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Mat Salleh sesat jalan kat Komtar JBCC.", "မတ် ဆာလဲ စဆတ် ဂျာလန် ကတ် ကွန်တာ ဂျေဘီစီစီ။", "လူဖြူနိုင်ငံခြားသား Komtar JBCC မှာ လမ်းပျောက်နေတယ်။", "The Caucasian tourist got lost at Komtar JBCC.", "'Mat Salleh' = Caucasian/westerner; Komtar JBCC is a JB city-centre landmark.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Brader, tolong tunjuk arah sikit.", "ဘရာဒါ၊ တိုလွန်း တွန်းဂျုတ် အာရားဟ် ဆီကစ်။", "အစ်ကို၊ လမ်းလေး နည်းနည်း ပြပေးပါဦး။", "Brother, please show the direction a bit.", "Calling strangers politely.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Benda boleh bincang, buat apa gaduh.", "ဘန်ဒါ ဘိုလဲ ဘင်ချန်း၊ ဘွတ် အာပါ ဂါဒူးဟ်။", "ဆွေးနွေးညှိနှိုင်းလို့ရတာကို ရန်ဖြစ်နေစရာ မလိုပါဘူး။", "Things can be discussed, why fight?", "Peace-making proverb.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Buang yang keruh, ambil yang jernih.", "ဘူဝမ် ယန်း ကရူးဟ်၊ အမ်ဘီလ် ယန်း ဂျာရ်နီးဟ်။", "မကောင်းတာတွေ မေ့ပစ်ပြီး ကောင်းတာတွေပဲ ဆက်ထိန်းကြစို့။", "Forgive and forget, make peace.", "Traditional Malay reconciliatory idiom.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Gempak gila konsert malam tadi!", "ဂမ်ပတ်ခ် ဂီလာ ကွန်ဆာတ် မာလမ် တာဒီ!", "မနေ့ညက ဖျော်ဖြေပွဲကတော့ အမိုက်စား ဟိုးလေးတကျော်ပဲ!", "Last night's concert was insanely epic!", "'Gempak' = sensational / bombastic.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Syok sendiri mamat tu.", "ရှော့ခ် စန်ဒီရီ မာမတ် တူး။", "ဟိုကောင်ကတော့ သူတစ်ယောက်တည်း သဘောကျပြီး ကျေနပ်နေတာ။", "That guy is indulging in his own delusion.", "'Syok sendiri' = self-absorbed.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Malu apa bossku!", "မာလူ အာပါ ဘော့စ်ကူး!", "ဘာရှက်စရာရှိလဲ ငါ့သူဌေးရယ်! (သတ္တိရှိစမ်းပါ)", "What to be shy about, my boss!", "Famous Malaysian catchphrase.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Kita jaga kita.", "ကီတာ ဂျာဂါ ကီတာ။", "ငါတို့အချင်းချင်း အပြန်အလှန် စောင့်ရှောက်ကြမယ်။", "We take care of our own people.", "Historic solidarity slogan in Malaysia.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Satu Malaysia hidup harmoni.", "ဆာတူ မလေးရှား ဟီဒုတ်ခ် ဟာရ်မိုနီ။", "မလေးရှားတစ်ဝန်း ငြိမ်းချမ်းစွာ အတူယှဉ်တွဲနေထိုင်ကြတယ်။", "One Malaysia living harmoniously.", "National unity theme.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Khabar angin je tu, jangan percaya.", "ခါဘာရ် အာငင် ဂျယ် တူး၊ ဂျာငန် ပါရ်ချာယာ။", "အဲ့ဒါ ကောလာဟလ သတင်းလွင့်နေတာပါ၊ မယုံနဲ့။", "That is just rumor, don't believe it.", "'Khabar angin' = rumor.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Confirm jadi punya hal ni.", "ကွန်ဖမ်း ဂျာဒီ ပူးညာ ဟာလ် နီ။", "ဒီကိစ္စ သေချာပေါက် ဖြစ်မှာပါ။", "This matter is confirmed for sure.", "'Confirm jadi' = 100% sure.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Tak payah susah-susah la bang.", "တက် ပါယဟ် ဆူးဆာ့ဟ်-ဆူးဆာ့ဟ် လာ ဘန်း။", "အရမ်း ပင်ပန်းမခံပါနဲ့တော့ အစ်ကိုရယ်။", "No need to trouble yourself brother.", "Polite reluctance.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Halang rezeki orang tak baik.", "ဟာလန်း ရီဇာကီ အိုရန်း တက် ဘာအစ်ခ်။", "သူတစ်ပါး စီးပွားလာဘ်လာဘကို ပိတ်ပင်တာ မကောင်းဘူး။", "Blocking others' livelihood is bad.", "Moral maxim.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Rezeki tak pernah salah alamat.", "ရီဇာကီ တက် ပါရ်နဟ် ဆာလာဟ် အာလာမတ်။", "ကုသိုလ်ကံနဲ့ လာဘ်လာဘဆိုတာ လိပ်စာမှားမရောက်ပါဘူး။", "Destined blessings never miss their address.", "Consoling encouragement.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Sabar separuh daripada iman.", "ဆာဘာရ် စပါရူး ဒါရီပါဒါ အီမန်။", "သည်းခံခြင်းသည် စိတ်နှလုံးသန့်ရှင်းခြင်း၏ ထက်ဝက်ဖြစ်သည်။", "Patience is half of faith.", "Virtue of patience.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Biar lambat asal selamat.", "ဘီယာရ် လမ်ဘတ် အာဆာလ် စလာမတ်။", "နှောင့်နှေးပါစေ ဘေးကင်းဖို့သာ အဓိက။", "Better late than never / Better slow but safe.", "Road safety maxim.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Budi bahasa budaya kita.", "ဘူဒီ ဘာဟာဆာ ဘူဒါယာ ကီတာ။", "ယဉ်ကျေးပျူငှာခြင်းသည် ကျွန်ုပ်တို့၏ ယဉ်ကျေးမှုဖြစ်သည်။", "Courtesy and good manners are our culture.", "National courtesy motto.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Masuk kandang kambing mengembek.", "မာဆုတ်ခ် ကန်ဒန်း ကမ်ဘင်း မင်ငမ်ဘတ်ခ်။", "ဆိတ်ခြံထဲရောက်ရင် ဆိတ်လို အော်ပါ။ (ရောက်ရာအရပ် ဓလေ့လိုက်)", "When in Rome, do as the Romans do.", "Proverb on adaptation.")
-        add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Hidup senang hati tenang.", "ဟီဒုတ်ခ် ဆနန်း ဟာတီ တနန်း။", "အေးချမ်းစွာနေ၊ စိတ်အေးချမ်းသာရှိပါစေ။", "Living comfortably with a peaceful heart.", "Good life wishes.")
         add("SLANG_PARTICLES", "ကာရန်အသုံးများ", "Jumpa lagi kawan, jaga diri!", "ဂျွန်ပါ လာဂီ ကာဝမ်၊ ဂျာဂါ ဒီရီ!", "နောက်မှ ပြန်တွေ့မယ် သူငယ်ချင်း၊ ကိုယ့်ကိုယ်ကို ဂရုစိုက်နော်!", "See you again friend, take good care!", "Affectionate conclusion.")
+
+        // ==========================================
+        // 11. ADDITIONAL CONVERSATIONAL GAPS - 10 phrases
+        // Appended after the original catalogue so existing
+        // positions stay stable and new rows get new IDs.
+        // ==========================================
+        add("GREETINGS", "နှုတ်ဆက်ခြင်း", "Kita jumpa kat mana nanti?", "ကီတာ ဂျွန်ပါ ကတ် မာနာ နန်တီ?", "နောက်မှ ဘယ်မှာ တွေ့ကြမလဲ။", "Where shall we meet later?", "Useful when making social plans.")
+        add("DINING", "စားသောက်ဆိုင်", "Kena bayar kat kaunter dulu.", "ကနာ ဘာယားရ် ကတ် ကောင်တာ ဒူးလူး။", "အရင်ဆုံး ကောင်တာမှာ ငွေရှင်းရမယ်။", "You need to pay at the counter first.", "Common instruction at mamak shops and food courts.")
+        add("MARKET", "ဈေးဝယ်ခြင်း", "Boleh potong kecil-kecil?", "ဘိုလဲ ပိုတွန် ကချစ်ခ်-ကချစ်ခ်?", "အသေးလေးတွေ လှီးပေးလို့ ရမလား။", "Could you cut it into small pieces?", "Useful for meat, fish or vegetables at the market.")
+        add("TRANSPORT", "သွားလာရေး", "Saya tertinggal beg dalam Grab.", "ဆာယာ တာရ်တိင်ဂယ်လ် ဘတ်ခ် ဒါလမ် ဂရတ်ဘ်။", "ကျွန်တော် Grab ကားထဲမှာ အိတ် ကျန်ခဲ့တယ်။", "I left my bag in the Grab car.", "For lost belongings; contact the driver through the app.")
+        add("TRANSPORT", "သွားလာရေး", "Boleh tunggu sekejap? Saya turun sekarang.", "ဘိုလဲ တွင်ဂူ စကတ်ဂျပ်စ်? ဆာယာ တူရုန်း စကားရန်း။", "ခဏလေး စောင့်ပေးလို့ရမလား။ အခု ဆင်းလာမယ်။", "Could you wait a moment? I'm coming down now.", "Common when the driver has arrived at the pickup point.")
+        add("WORK", "လုပ်ငန်းခွင်", "Boleh ulang arahan tu?", "ဘိုလဲ အူးလန်း အာရားဟန် တူး?", "အဲဒီ ညွှန်ကြားချက်ကို ပြန်ပြောပေးလို့ ရမလား။", "Could you repeat that instruction?", "Polite way to ask for clarification at work.")
+        add("HOUSING", "အိမ်ငှားခြင်း", "Bila boleh masuk rumah?", "ဘီလာ ဘိုလဲ မာဆုတ်ခ် ရူးမဟ်?", "ဘယ်တော့ အိမ်ထဲ ဝင်နိုင်မလဲ။", "When can I move in?", "Asking about the move-in date after agreeing to rent.")
+        add("HOUSING", "အိမ်ငှားခြင်း", "Terkunci, kunci tertinggal dalam rumah!", "တာရ်ကွန်းချီ၊ ကွန်းချီ တာရ်တိင်ဂယ်လ် ဒါလမ် ရူးမဟ်!", "တံခါးပိတ်မိနေတယ်၊ သော့က အိမ်ထဲမှာ ကျန်ခဲ့တယ်!", "I'm locked out, the key is inside the house!", "For a lockout emergency; call the landlord or a locksmith.")
+        add("HEALTH_EMERGENCY", "ကျန်းမာရေး", "Boleh buat appointment dengan doktor?", "ဘိုလဲ ဘွတ် အာပွိုင်းတ်မန်း ဒငန် ဒေါက်တာ?", "ဆရာဝန်နဲ့ ချိန်းဆိုလို့ ရမလား။", "Can I make an appointment with the doctor?", "Used at clinics that take advance appointments.")
+        add("DAILY_LIFE", "နေ့စဉ်လူနေမှု", "Dobi ni siap dalam berapa jam?", "ဒိုဘီ နီ ဆီယပ် ဒါလမ် ဘရာပါ ဂျမ်?", "ဒီအဝတ်လျှော်ဆိုင်က ဘယ်နှစ်နာရီအတွင်း ပြီးမလဲ။", "How many hours until the laundry is ready?", "Useful at a drop-off laundry service.")
 
         return list
     }

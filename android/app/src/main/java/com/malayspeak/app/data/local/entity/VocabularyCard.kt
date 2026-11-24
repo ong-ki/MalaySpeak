@@ -12,7 +12,10 @@ import androidx.room.PrimaryKey
     tableName = "vocabulary_cards",
     indices = [
         Index(value = ["category"]),
-        Index(value = ["malayPhrase"]),
+        // Schema-level guard against exact duplicate phrases. Normalized
+        // (case/whitespace-insensitive) uniqueness is enforced transactionally
+        // by VocabularyCardDao.insertMissingPhrases().
+        Index(value = ["malayPhrase"], unique = true),
         Index(value = ["englishMeaning"]),
         Index(value = ["myanmarMeaning"]),
         Index(value = ["isLearned"])

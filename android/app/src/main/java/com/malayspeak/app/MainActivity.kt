@@ -4,29 +4,21 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
-import com.malayspeak.app.ui.navigation.Screen
-import com.malayspeak.app.ui.screens.progress.ProgressScreen
+import com.malayspeak.app.data.audio.MalaySpeechPlayer
+import com.malayspeak.app.data.local.preferences.ThemeMode
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
+import com.malayspeak.app.ui.screens.MainScreen
 import com.malayspeak.app.ui.screens.progress.ProgressViewModel
-import com.malayspeak.app.ui.screens.translate.TranslationScreen
 import com.malayspeak.app.ui.screens.translate.TranslationViewModel
-import com.malayspeak.app.ui.screens.vocabulary.VocabularyScreen
-import com.malayspeak.app.ui.screens.vocabulary.VocabularyViewModel
-import com.malayspeak.app.ui.theme.MalaySpeakTheme
+import com.malayspeak.app.ui.theme.ThemeViewModel
 
 class MainActivity : ComponentActivity() {
 
+    private lateinit var speechPlayer: MalaySpeechPlayer
     private val repository by lazy { (application as MalaySpeakApp).repository }
 
     private val translationViewModel: TranslationViewModel by viewModels {
@@ -38,22 +30,21 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private val vocabularyViewModel: VocabularyViewModel by viewModels {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                @Suppress("UNCHECKED_CAST")
-                return VocabularyViewModel(repository) as T
-            }
-        }
+    private val themePreferencesRepository by lazy {
+        (application as MalaySpeakApp).themePreferencesRepository
     }
 
-    private val themePreferencesRepository by lazy { (application as MalaySpeakApp).themePreferencesRepository }
+    // A short synchronous local read lets the first Compose frame use the stored
+    // preference, so the system-controlled splash does not flash the wrong theme.
+    private val initialThemeMode: ThemeMode by lazy {
+        runBlocking { themePreferencesRepository.themeMode.first() }
+    }
 
-    private val themeViewModel: com.malayspeak.app.ui.theme.ThemeViewModel by viewModels {
+    private val themeViewModel: ThemeViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")
-                return com.malayspeak.app.ui.theme.ThemeViewModel(themePreferencesRepository) as T
+                return ThemeViewModel(themePreferencesRepository, initialThemeMode) as T
             }
         }
     }
@@ -68,86 +59,39 @@ class MainActivity : ComponentActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Must be called before super.onCreate so the splash window is installed
+        // with the launch theme. It is removed automatically on first frame.
+        installSplashScreen()
         super.onCreate(savedInstanceState)
+        speechPlayer = MalaySpeechPlayer(applicationContext)
         setContent {
-            com.malayspeak.app.ui.screens.MainScreen(
+            MainScreen(
                 translationViewModel = translationViewModel,
                 progressViewModel = progressViewModel,
-                themeViewModel = themeViewModel
+                themeViewModel = themeViewModel,
+                speechPlayer = speechPlayer
             )
         }
     }
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MalaySpeakAppScaffold(
-    translationViewModel: TranslationViewModel,
-    progressViewModel: ProgressViewModel,
-    isDarkTheme: Boolean = false,
-    onToggleTheme: () -> Unit = {}
-) {
-    val navController = rememberNavController()
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentDestination = navBackStackEntry?.destination
+    override fun onResume() {
+        super.onResume()
+        if (::speechPlayer.isInitialized) {
+            speechPlayer.refreshIfUnavailable()
+        }
+    }
 
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        bottomBar = {
-            NavigationBar(
-                containerColor = MaterialTheme.colorScheme.surface,
-                contentColor = MaterialTheme.colorScheme.onSurface
-            ) {
-                Screen.items.forEach { screen ->
-                    val selected = currentDestination?.route == screen.route
-                    NavigationBarItem(
-                        selected = selected,
-                        onClick = {
-                            navController.navigate(screen.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
-                        icon = {
-                            Icon(
-                                imageVector = if (selected) screen.selectedIcon else screen.unselectedIcon,
-                                contentDescription = screen.titleEn
-                            )
-                        },
-                        label = {
-                            Text(
-                                text = screen.titleMm,
-                                style = MaterialTheme.typography.labelSmall
-                            )
-                        },
-                        colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = MaterialTheme.colorScheme.primary,
-                            selectedTextColor = MaterialTheme.colorScheme.primary,
-                            indicatorColor = MaterialTheme.colorScheme.primaryContainer
-                        )
-                    )
-                }
-            }
+    override fun onStop() {
+        if (::speechPlayer.isInitialized) {
+            speechPlayer.stop()
         }
-    ) { innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = Screen.Translate.route,
-            modifier = Modifier.padding(innerPadding)
-        ) {
-            composable(Screen.Translate.route) {
-                TranslationScreen(
-                    viewModel = translationViewModel,
-                    isDarkTheme = isDarkTheme,
-                    onToggleTheme = onToggleTheme
-                )
-            }
-            composable(Screen.Progress.route) {
-                ProgressScreen(viewModel = progressViewModel)
-            }
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        if (::speechPlayer.isInitialized) {
+            speechPlayer.release()
         }
+        super.onDestroy()
     }
 }

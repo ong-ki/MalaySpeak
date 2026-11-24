@@ -1,5 +1,6 @@
 package com.malayspeak.app.ui.screens.progress
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.malayspeak.app.data.local.entity.VocabularyCard
@@ -7,6 +8,7 @@ import com.malayspeak.app.data.repository.OfflinePhraseRepository
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
+@Immutable
 data class CategoryProgressItem(
     val category: String,
     val categoryMm: String,
@@ -15,12 +17,14 @@ data class CategoryProgressItem(
     val percentage: Int
 )
 
+@Immutable
 data class ProgressUiState(
-    val totalCount: Int = 500,
+    val totalCount: Int = 0,
     val learnedCount: Int = 0,
     val progressPercentage: Int = 0,
     val categoriesProgress: List<CategoryProgressItem> = emptyList(),
     val recentlyLearned: List<VocabularyCard> = emptyList(),
+    val spotlight: VocabularyCard? = null,
     val isLoading: Boolean = false
 )
 
@@ -60,7 +64,8 @@ class ProgressViewModel(
                     learnedCount = learned,
                     progressPercentage = percentage,
                     categoriesProgress = catProgress,
-                    recentlyLearned = learnedCards.take(15)
+                    recentlyLearned = learnedCards.take(15),
+                    spotlight = allCards.firstOrNull { !it.isLearned } ?: allCards.firstOrNull()
                 )
             }.collect { state ->
                 _uiState.value = state

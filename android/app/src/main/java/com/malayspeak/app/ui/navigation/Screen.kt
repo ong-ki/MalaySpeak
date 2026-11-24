@@ -1,37 +1,46 @@
 package com.malayspeak.app.ui.navigation
 
+import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AutoAwesome
-import androidx.compose.material.icons.filled.BarChart
-import androidx.compose.material.icons.outlined.AutoAwesome
-import androidx.compose.material.icons.outlined.BarChart
+import androidx.compose.material.icons.automirrored.filled.MenuBook
+import androidx.compose.material.icons.automirrored.outlined.MenuBook
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Insights
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Insights
+import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.malayspeak.app.R
 
+@Immutable
 sealed class Screen(
     val route: String,
-    val titleMm: String,
-    val titleEn: String,
+    @StringRes val labelRes: Int,
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector
 ) {
-    object Translate : Screen(
-        route = "translate",
-        titleMm = "ဘာသာပြန်",
-        titleEn = "Translate",
-        selectedIcon = Icons.Filled.AutoAwesome,
-        unselectedIcon = Icons.Outlined.AutoAwesome
+    object Home : Screen(
+        route = "home",
+        labelRes = R.string.nav_home,
+        selectedIcon = Icons.Filled.Home,
+        unselectedIcon = Icons.Outlined.Home
+    )
+
+    object Words : Screen(
+        route = "words",
+        labelRes = R.string.nav_phrases,
+        selectedIcon = Icons.AutoMirrored.Filled.MenuBook,
+        unselectedIcon = Icons.AutoMirrored.Outlined.MenuBook
     )
 
     object Progress : Screen(
         route = "progress",
-        titleMm = "တိုးတက်မှု",
-        titleEn = "Progress",
-        selectedIcon = Icons.Filled.BarChart,
-        unselectedIcon = Icons.Outlined.BarChart
+        labelRes = R.string.nav_progress,
+        selectedIcon = Icons.Filled.Insights,
+        unselectedIcon = Icons.Outlined.Insights
     )
 
     companion object {
-        // 2-tab Bottom Navigation: Translate (Home) and Progress
-        val items = listOf(Translate, Progress)
+        val items = listOf(Home, Words, Progress)
     }
 }
